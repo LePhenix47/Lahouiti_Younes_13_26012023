@@ -2,7 +2,7 @@
 import Head from "next/head";
 
 //Home page
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       {/*   

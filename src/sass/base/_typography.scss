@@ -1,5 +1,11 @@
 @use "../utils/" as *;
 
+@font-face {
+    font-family: "Rehn";
+    src: url("");
+}
+
+
 body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-weight: 500;

@@ -5,7 +5,7 @@ export default function PageLayout(props: any): JSX.Element {
   return (
     <>
       <Header />
-      <main className="content-wrapper">{props.children}</main>
+      <main className="page-layout">{props.children}</main>
       <Footer />
     </>
   );

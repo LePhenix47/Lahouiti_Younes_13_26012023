@@ -9,6 +9,7 @@
     $color-secondary: #2EB16B;
     $color-tertiary: #124c2d;
 
+    $border-top-color: #333;
 
     //CSS variables
 
@@ -20,5 +21,7 @@
         --color-primary:#{$color-primary};
         --color-secondary:#{$color-secondary};
         --color-tertiary:#{$color-tertiary};
+
+        --border-top-color:#{$border-top-color};
     }
 }

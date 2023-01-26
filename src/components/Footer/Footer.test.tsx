@@ -12,11 +12,11 @@ describe("The footer component", () => {
 
   it("should display the current year next to the foundation date", async () => {
     render(<Footer />);
-    const currentYear = new Date().getFullYear();
+    const currentYear: number = new Date().getFullYear();
 
-    const copyrightElement = screen.getByTestId("small");
+    const copyrightElement: HTMLElement = screen.getByTestId("small");
 
-    expect(copyrightElement.textContent?.trim()).toEqual(
+    expect(copyrightElement?.textContent?.trim()).toEqual(
       `Copyright © 2020-${currentYear} Argent Bank`
     );
   });
