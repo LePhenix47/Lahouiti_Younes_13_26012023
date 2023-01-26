@@ -12,9 +12,15 @@ export default function Header(): JSX.Element {
       </Link>
       <nav className="header__navigation-bar">
         <ul className="header__unordered-list">
-          <li className="header__list-item"></li>
-          <li className="header__list-item"></li>
-          <li className="header__list-item"></li>
+          <li className="header__list-item">
+            <Link href="/sign-up/">Sign-up</Link>
+          </li>
+          <li className="header__list-item">
+            <Link href="/">Log-out</Link>
+          </li>
+          <li className="header__list-item">
+            <Link href="/user">Tony</Link>
+          </li>
         </ul>
       </nav>
     </header>

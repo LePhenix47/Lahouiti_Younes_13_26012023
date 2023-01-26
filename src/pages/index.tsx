@@ -1,4 +1,5 @@
 //Next
+import SpinLoader from "@/components/SpinLoader/SpinLoader";
 import Head from "next/head";
 
 //Home page
@@ -40,6 +41,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" type="image/png" href="/images/svg/icon.svg" />
       </Head>
       <h1>P13</h1>
+      <SpinLoader width={100} />
     </>
   );
 }

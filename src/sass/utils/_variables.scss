@@ -6,6 +6,7 @@ $body-bg-color: white;
 $color-primary: #2c3e50;
 $color-secondary: #00bc78;
 $color-tertiary: #005834;
+$color-quaternary: white;
 
 $border-top-color: #ccc;
 
@@ -20,6 +21,7 @@ $border-top-color: #ccc;
     --color-primary:#{$color-primary};
     --color-secondary:#{$color-secondary};
     --color-tertiary:#{$color-tertiary};
+    --color-quaternary:#{$color-quaternary};
 
     --border-top-color:#{$border-top-color};
 }
