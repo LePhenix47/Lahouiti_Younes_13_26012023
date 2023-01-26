@@ -1,1 +1,5 @@
-.header {}
+@use "../../sass/utils/" as *;
+
+.header {
+    background-color: var(--bg-primary);
+}

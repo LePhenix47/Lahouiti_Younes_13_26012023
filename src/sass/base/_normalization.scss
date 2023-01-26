@@ -1,1 +1,77 @@
 @use "../utils/" as *;
+
+//Removes ANY animation if the user has the reduced motion option enabled in their device
+@media (prefers-reduced-motion) {
+
+    *,
+    :before,
+    ::after {
+        -webkit-animation: none !important;
+        animation: none !important;
+
+        transition: none !important;
+    }
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::selection {
+    // background-color: var(--bg-color-primary);
+    // color: var(--text-color-quaternary);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 50%;
+}
+
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--body-bg-color);
+    color: var(--text-color-primary);
+    transition: background-color 350ms ease-out,
+        color 350ms ease-out;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+
+input {
+    border: none;
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    &:hover {
+        cursor: pointer;
+    }
+}

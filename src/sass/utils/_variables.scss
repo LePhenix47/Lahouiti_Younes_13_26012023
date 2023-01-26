@@ -9,4 +9,6 @@ $color-tertiary: #124C2D;
 
 //CSS variables
 
-:root {}
+:root {
+    --bg-primary: #{$bg-primary};
+}

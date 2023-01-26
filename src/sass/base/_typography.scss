@@ -1,1 +1,30 @@
 @use "../utils/" as *;
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 500;
+}
+
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+text {
+    font-family: 'Helvetica', sans-serif;
+}
+
+tspan {
+    font-size: 12px;
+}
+
+button {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+}
