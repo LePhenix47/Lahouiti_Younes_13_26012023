@@ -1,3 +1,16 @@
 @use "../../sass/utils/" as *;
 
-.header {}
+.header {
+    min-height: 64px;
+
+    &__logo {
+        font-family: "Rehn";
+        font-size: 32px;
+
+        color: var(--color-secondary);
+
+        &>span {
+            color: var(--color-tertiary)
+        }
+    }
+}

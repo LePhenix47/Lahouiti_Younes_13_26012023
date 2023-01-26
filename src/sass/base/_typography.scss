@@ -1,8 +1,9 @@
 @use "../utils/" as *;
 
+//We import manually the font for the 
 @font-face {
     font-family: "Rehn";
-    src: url("");
+    src: url("./Fonts/Rehn-Me.otf");
 }
 
 
