@@ -1,6 +1,24 @@
-@media (prefers-color-scheme:dark) {
-    //SASS
+@media (prefers-color-scheme: dark) {
+    //SASS variables
+    $bg-primary: black;
+    $bg-secondary: #00bc77;
+    $body-bg-color: black;
 
-    //CSS
-    :root {}
+
+    $color-primary: #afc1d3;
+    $color-secondary: #2EB16B;
+    $color-tertiary: #124c2d;
+
+
+    //CSS variables
+
+    :root {
+        --bg-primary: #{$bg-primary};
+        --bg-secondary: #{$bg-secondary};
+        --body-bg-color: #{$body-bg-color};
+
+        --color-primary:#{$color-primary};
+        --color-secondary:#{$color-secondary};
+        --color-tertiary:#{$color-tertiary};
+    }
 }

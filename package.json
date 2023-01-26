@@ -6,17 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --coverage --noStackTrace --silent"
   },
   "dependencies": {
     "@next/font": "13.1.5",
-    "@testing-library/react": "^13.4.0",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
-    "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
-    "jest": "^29.4.0",
     "next": "13.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -25,6 +23,11 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "jest": "^29.4.0",
+    "jest-environment-jsdom": "^29.4.0",
+    "eslint": "8.32.0",
     "sass": "^1.57.1"
   }
 }

@@ -1,6 +1,7 @@
 //SASS variables
 $bg-primary: white;
 $bg-secondary: #00bc77;
+$body-bg-color: white;
 
 $color-primary: #2c3e50;
 $color-secondary: #2EB16B;
@@ -11,4 +12,10 @@ $color-tertiary: #124C2D;
 
 :root {
     --bg-primary: #{$bg-primary};
+    --bg-secondary: #{$bg-secondary};
+    --body-bg-color: #{$body-bg-color};
+
+    --color-primary:#{$color-primary};
+    --color-secondary:#{$color-secondary};
+    --color-tertiary:#{$color-tertiary};
 }

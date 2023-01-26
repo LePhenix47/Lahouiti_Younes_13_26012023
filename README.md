@@ -1,11 +1,17 @@
 ## WIP
 
 
-font-family: Avenir, Helvetica, Arial, sans-serif
 
 # 0 Miscellaneous
 
 
-# Front-End
+# 1. Front-End
+Useful commands:
 
-# Back-End
+to run the test on a particular file:
+```js
+npm run test -- [FILE].tsx --silent=false --coverage=false
+```
+
+
+# 2. Back-End

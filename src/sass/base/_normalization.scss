@@ -36,7 +36,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     background-color: var(--body-bg-color);
-    color: var(--text-color-primary);
+    color: var(--color-primary);
     transition: background-color 350ms ease-out,
         color 350ms ease-out;
 }
