@@ -18,6 +18,7 @@ export default function Button({
         e.preventDefault();
         callbackFunction();
       }}
+      data-testid="button"
     >
       Sign In
     </button>

@@ -1,8 +1,13 @@
 import Button from "@/components/Button/Button";
+import { log } from "@/utils/functions/helperFunctions";
 import Head from "next/head";
 import React from "react";
 
 export default function SignIn(): JSX.Element {
+  function sendForm(e: any) {
+    log({ e });
+  }
+
   return (
     <>
       <Head>
@@ -80,9 +85,7 @@ export default function SignIn(): JSX.Element {
             <Button
               className="sign-in__button"
               buttonType="submit"
-              callbackFunction={(e: any) => {
-                e.preventDefault();
-              }}
+              callbackFunction={sendForm}
             />
           </div>
         </form>
