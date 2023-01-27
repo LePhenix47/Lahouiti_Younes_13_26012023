@@ -22,14 +22,14 @@ export default function Home(): JSX.Element {
         <meta name="robots" content="index, follow" />
         <meta
           name="description"
-          content="Bienvenue dans la page d'accueil de Argent Bank!"
+          content="What would you like the power to do? For you and your family, your business and your community. At ArgentBank, our purpose is to help make financial lives better through the power of every connection."
         />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Accueil" />
         <meta
           property="og:description"
-          content="Bienvenue dans la page d'accueil de Argent Bank!"
+          content="What would you like the power to do? For you and your family, your business and your community. At ArgentBank, our purpose is to help make financial lives better through the power of every connection."
         />
         <meta property="og:image" content="/images/svg/icon.svg" />
 
@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
         {/*
          <!--Title--> 
          */}
-        <title>Accueil</title>
+        <title>Home page</title>
 
         {/*
          <!--Page logo--> 
@@ -55,9 +55,9 @@ export default function Home(): JSX.Element {
               <br />
               High interest rates.
             </h1>
-            <p className="main-page__slogan-paragrapgh">
+            <h2 className="main-page__slogan-subtitle">
               Open a savings account with Argent Bank today!
-            </p>
+            </h2>
           </section>
         </div>
       </section>

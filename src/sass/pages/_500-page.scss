@@ -1,0 +1,7 @@
+@use "../utils/" as *;
+
+
+.error-500 {
+    @include center-flex-column(15px);
+    min-height: 80vh;
+}

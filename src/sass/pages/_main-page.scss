@@ -17,6 +17,12 @@
         top: 70px;
         right: 70px;
 
+        @include mobile-only {
+            @include absolute-center;
+            max-width: 270px;
+            min-width: 210px;
+        }
+
         max-width: 370px;
 
         background-color: var(--bg-primary);
@@ -27,10 +33,19 @@
     &__slogan-title {
         font-size: 24px;
         margin-bottom: 20px;
+
+        @include mobile-only {
+            font-size: 16px;
+        }
     }
 
-    &__slogan-paragraph {
+    &__slogan-subtitle {
         font-size: 19px;
+        font-weight: 400;
+
+        @include mobile-only {
+            font-size: 14px;
+        }
     }
 
 
@@ -41,5 +56,14 @@
         gap: 50px;
 
         padding: 40px 20px;
+
+        @include tablet-only {
+
+            flex-direction: column;
+        }
+
+        @include mobile-only {
+            flex-direction: column;
+        }
     }
 }

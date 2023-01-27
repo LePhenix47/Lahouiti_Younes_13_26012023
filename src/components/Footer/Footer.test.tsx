@@ -17,7 +17,7 @@ describe("The footer component", () => {
     const copyrightElement: HTMLElement = screen.getByTestId("small");
 
     expect(copyrightElement?.textContent?.trim()).toEqual(
-      `Copyright © 2020-${currentYear} Argent Bank`
+      `Copyright © 2020-${currentYear} - ArgentBank`
     );
   });
 

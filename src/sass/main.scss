@@ -10,6 +10,9 @@
 
 //Pages
 @forward "./pages/main-page";
+@forward "./pages/sign-in";
+@forward "./pages/404-page";
+@forward "./pages/500-page";
 
 //Themes
 @forward "./themes/dark-theme";

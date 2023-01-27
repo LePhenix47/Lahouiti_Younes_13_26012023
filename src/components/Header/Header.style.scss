@@ -44,6 +44,11 @@
         &:hover {
             text-decoration: underline;
         }
+
+        &:visited {
+            color: var(--color-primary);
+
+        }
     }
 
 }

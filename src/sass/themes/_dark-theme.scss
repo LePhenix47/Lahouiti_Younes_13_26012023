@@ -3,6 +3,8 @@
     //SASS variables
     $bg-primary: black;
     $bg-secondary: #00bc77;
+    $bg-tertiary: #12002b;
+
     $body-bg-color: black;
 
 
@@ -12,6 +14,7 @@
     $color-quaternary: black;
 
     $border-top-color: #333;
+    $input-border-color: #b0b0b0;
 
     $scrollbar-track-color: $color-secondary;
     $scrollbar-thumb-color: $color-tertiary;
@@ -25,6 +28,8 @@
     :root {
         --bg-primary: #{$bg-primary};
         --bg-secondary: #{$bg-secondary};
+        --bg-tertiary: #{$bg-tertiary};
+
         --body-bg-color: #{$body-bg-color};
 
         --color-primary:#{$color-primary};
@@ -33,6 +38,7 @@
         --color-quaternary:#{$color-quaternary};
 
         --border-top-color:#{$border-top-color};
+        --input-border-color:#{$input-border-color};
 
         --scrollbar-track-color:#{$scrollbar-track-color};
         --scrollbar-thumb-color:#{$scrollbar-thumb-color};
@@ -41,6 +47,8 @@
 
         //Pixel and percentages
 
-        --image-inversion: $image-inversion;
+        .advantage__image {
+            filter: invert(100%);
+        }
     }
 }

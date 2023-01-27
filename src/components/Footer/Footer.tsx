@@ -6,7 +6,7 @@ export default function Footer(): JSX.Element {
   return (
     <footer className="footer">
       <small className="footer__small" data-testid="small">
-        Copyright © 2020-{currentYear} Argent Bank
+        Copyright © 2020-{currentYear} - ArgentBank
       </small>
     </footer>
   );

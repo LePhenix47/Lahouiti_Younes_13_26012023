@@ -26,7 +26,7 @@ export default function Advantage({
         />
       </div>
       <div className="advantage__text-container">
-        <h2 className="advantage__title">{title}</h2>
+        <h3 className="advantage__title">{title}</h3>
         <p className="advantage__text">{text}</p>
       </div>
     </div>
