@@ -20,6 +20,17 @@ export default function Document(): JSX.Element {
          <!--Page logo--> 
         */}
         <link rel="icon" type="image/png" href="/images/svg/icon.svg" />
+
+        {/* Icons     */}
+        <script
+          src="https://kit.fontawesome.com/904e9ee361.js"
+          crossOrigin="anonymous"
+        ></script>
+
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
       </Head>
       <body>
         <Main />

@@ -2,23 +2,23 @@
 
 * {
     &::-webkit-scrollbar {
-        background-color: var(--scrollbar-track-bg-color);
+        background-color: var(--scrollbar-track-color);
         border-radius: 100vmax;
         margin-block: 5px;
-        width: 7px;
+        width: 9px;
         min-height: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--scrollbar-thumb-bg-color);
+        background-color: var(--scrollbar-thumb-color);
         border-radius: 100vmax;
 
         &:hover {
-            background-color: var(--scrollbar-thumb-bg-color--hover);
+            background-color: var(--scrollbar-thumb-color--hover);
         }
 
         &:active {
-            background-color: var(--scrollbar-thumb-bg-color--active);
+            background-color: var(--scrollbar-thumb-color--active);
         }
     }
 
@@ -29,6 +29,6 @@
 @supports (scrollbar-color: black white) {
     :root {
         scrollbar-width: thin;
-        scrollbar-color: var(--scrollbar-thumb-bg-color) var(--scrollbar-track-bg-color); // BGC for the scrollbar thumb - BGC for the scrollbar track
+        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color); // BGC for the scrollbar thumb - BGC for the scrollbar track
     }
 }

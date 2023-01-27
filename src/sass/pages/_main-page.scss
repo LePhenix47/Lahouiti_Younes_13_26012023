@@ -1,0 +1,45 @@
+@use "../utils/" as *;
+
+.main-page {
+    &__banner {
+        position: relative;
+
+        background-image: url("../../../public/images/backgrounds/bank-tree.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0% 33%;
+
+        height: 400px;
+    }
+
+    &__slogan-window {
+        position: absolute;
+        top: 70px;
+        right: 70px;
+
+        max-width: 370px;
+
+        background-color: var(--bg-primary);
+
+        padding: 32px;
+    }
+
+    &__slogan-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    &__slogan-paragraph {
+        font-size: 19px;
+    }
+
+
+    &__advantages {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 50px;
+
+        padding: 40px 20px;
+    }
+}

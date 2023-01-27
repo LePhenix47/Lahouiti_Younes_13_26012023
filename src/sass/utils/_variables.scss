@@ -10,7 +10,13 @@ $color-quaternary: white;
 
 $border-top-color: #ccc;
 
+$scrollbar-track-color: $color-tertiary;
+$scrollbar-thumb-color: $color-secondary;
+$scrollbar-thumb-color--hover: lighten($color-secondary, 10%);
+$scrollbar-thumb-color--active: darken($color-secondary, 10%);
 
+//
+$image-inversion: 0%;
 //CSS variables
 
 :root {
@@ -24,4 +30,13 @@ $border-top-color: #ccc;
     --color-quaternary:#{$color-quaternary};
 
     --border-top-color:#{$border-top-color};
+
+    --scrollbar-track-color:#{$scrollbar-track-color};
+    --scrollbar-thumb-color:#{$scrollbar-thumb-color};
+    --scrollbar-track-color:#{$scrollbar-track-color};
+    --scrollbar-thumb-color--hover:#{$scrollbar-thumb-color--hover};
+    --scrollbar-thumb-color--active:#{$scrollbar-thumb-color--active};
+
+    //Pixel and percentages
+    --image-inversion: $image-inversion;
 }

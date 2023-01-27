@@ -3,14 +3,47 @@
 .header {
     min-height: 64px;
 
+    padding: 0 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
     &__logo {
         font-family: "Rehn";
-        font-size: 32px;
+        font-size: 30px;
 
         color: var(--color-secondary);
+
+        &:visited {
+            color: var(--color-secondary);
+        }
 
         &>span {
             color: var(--color-tertiary);
         }
     }
+
+
+    &__navigation-bar {
+        min-width: 10%;
+    }
+
+    &__unordered-list {
+        //
+        @include center-flex(15px);
+    }
+
+    &__list-item>a {
+        color: var(--color-primary);
+        font-size: 16px;
+        font-weight: 700;
+        //
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
 }

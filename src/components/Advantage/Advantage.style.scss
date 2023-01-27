@@ -1,0 +1,46 @@
+@use "../../sass/utils/" as *;
+
+.advantage {
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 10px;
+    min-height: 150px;
+
+    flex: 1;
+
+    &__image-container {
+
+        padding: 16px;
+
+        border-radius: 50%;
+        border: 10px solid var(--bg-secondary);
+
+    }
+
+    &__image {
+        //For the SVG
+        // filter: invert(var(--image-inversion));
+    }
+
+    &__text-container {
+        //
+        min-height: 100px;
+        text-align: center;
+        @include center-flex-column(15px);
+    }
+
+    &__title {
+        //
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    &__text {
+        //
+        font-size: 16px;
+    }
+}

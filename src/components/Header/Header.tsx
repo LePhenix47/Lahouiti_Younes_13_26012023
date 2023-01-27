@@ -13,13 +13,19 @@ export default function Header(): JSX.Element {
       <nav className="header__navigation-bar">
         <ul className="header__unordered-list">
           <li className="header__list-item">
-            <Link href="/sign-up/">Sign-up</Link>
+            <Link href="/sign-in/">
+              <i className="fa fa-user-circle header__sign-in-logo"></i> Sign-in
+            </Link>
           </li>
           <li className="header__list-item">
-            <Link href="/">Log-out</Link>
+            {/* <Link href="/">
+              <i className="fa fa-sign-out"></i> Log-out
+            </Link>
           </li>
           <li className="header__list-item">
-            <Link href="/user">Tony</Link>
+            <Link href="/user">
+              <i className="fa fa-user-circle header__sign-in-logo"></i> Tony
+            </Link> */}
           </li>
         </ul>
       </nav>
