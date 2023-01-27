@@ -4,8 +4,8 @@ import Head from "next/head";
 import React from "react";
 
 export default function SignIn(): JSX.Element {
-  function sendForm(e: any) {
-    log({ e });
+  function sendForm(event: any) {
+    log({ event });
   }
 
   return (

@@ -1,8 +1,8 @@
 //Next
-import { log } from "@/utils/functions/helperFunctions";
 import Image from "next/image";
 
-import chatIcon from "../../../public/images/svg/icon-chat.svg";
+//Utils
+import { log } from "../../utils/functions/helperFunctions";
 
 export default function Advantage({
   image,
@@ -13,7 +13,6 @@ export default function Advantage({
   title: string;
   text: string;
 }): JSX.Element {
-  log(chatIcon);
   return (
     <div className="advantage">
       <div className="advantage__image-container">

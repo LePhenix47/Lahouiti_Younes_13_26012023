@@ -1,7 +1,9 @@
 //Next
-import { log } from "@/utils/functions/helperFunctions";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
+
+//Utils
+import { log } from "../../utils/functions/helperFunctions";
 
 //This is the page of the user
 export default function User(): JSX.Element {
@@ -10,7 +12,7 @@ export default function User(): JSX.Element {
   //
   const userId: string | string[] | undefined = urlPath.query.slug;
 
-  log({ urlPath }, urlPath.query.slug);
+  // log({ urlPath }, urlPath.query.slug);
 
   return (
     <>
