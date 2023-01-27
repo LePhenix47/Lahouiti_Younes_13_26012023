@@ -1,3 +1,4 @@
+import Button from "@/components/Button/Button";
 import Head from "next/head";
 import React from "react";
 
@@ -15,7 +16,7 @@ export default function SignIn(): JSX.Element {
         />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Accueil" />
+        <meta property="og:title" content="Sign-in page" />
         <meta
           property="og:description"
           content="Sign in to your ArgentBank account by entering your username along with your password."
@@ -38,7 +39,10 @@ export default function SignIn(): JSX.Element {
         <form action="#" className="sign-in__form">
           <fieldset className="sign-in__fieldset">
             <legend className="sign-in__legend">
-              <i className="fa fa-user-circle sign-in__legend-logo"></i>
+              <i
+                aria-hidden
+                className="fa fa-user-circle sign-in__legend-logo"
+              ></i>
               <br />
               Sign In
             </legend>
@@ -58,6 +62,7 @@ export default function SignIn(): JSX.Element {
                   type="password"
                   id="password"
                   className="sign-in__input"
+                  autoComplete="current-password"
                 />
               </div>
               <div className="sign-in__label-input-container sign-in__label-input-container-checkbox">
@@ -72,13 +77,13 @@ export default function SignIn(): JSX.Element {
           </fieldset>
 
           <div className="sign-in__button-container">
-            <button
+            <Button
               className="sign-in__button"
-              type="submit"
-              onClick={(e) => e.preventDefault()}
-            >
-              Sign In
-            </button>
+              buttonType="submit"
+              callbackFunction={(e: any) => {
+                e.preventDefault();
+              }}
+            />
           </div>
         </form>
       </section>

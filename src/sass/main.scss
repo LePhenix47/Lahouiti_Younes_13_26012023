@@ -6,7 +6,15 @@
 @forward "./base/typography";
 
 //Components
+@forward "./components/advantage-card";
+@forward "./components/button";
 @forward "./components/scrollbar";
+@forward "./components/spin-loader";
+
+//Layout
+@forward "./layout/header";
+@forward "./layout/page-layout";
+@forward "./layout/footer";
 
 //Pages
 @forward "./pages/main-page";

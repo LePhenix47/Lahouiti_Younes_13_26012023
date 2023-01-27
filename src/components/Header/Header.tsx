@@ -14,7 +14,11 @@ export default function Header(): JSX.Element {
         <ul className="header__unordered-list">
           <li className="header__list-item">
             <Link href="/sign-in/">
-              <i className="fa fa-user-circle header__sign-in-logo"></i> Sign-in
+              <i
+                aria-hidden
+                className="fa fa-user-circle header__sign-in-logo"
+              ></i>
+              Sign-in
             </Link>
           </li>
           <li className="header__list-item">

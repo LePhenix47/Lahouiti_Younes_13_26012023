@@ -1,4 +1,4 @@
-@use "../../sass/utils/" as *;
+@use "../utils/" as *;
 
 .header {
     min-height: 64px;
@@ -36,6 +36,8 @@
     }
 
     &__list-item>a {
+
+
         color: var(--color-primary);
         font-size: 16px;
         font-weight: 700;
@@ -49,6 +51,11 @@
             color: var(--color-primary);
 
         }
+    }
+
+
+    &__sign-in-logo {
+        margin-right: 5px;
     }
 
 }

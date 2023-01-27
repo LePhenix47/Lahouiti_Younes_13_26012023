@@ -1,11 +1,13 @@
 //Next
-import SpinLoader from "../components/SpinLoader/SpinLoader";
 import Head from "next/head";
 
 //Utils
 //Variables
 import { slogans } from "../utils/variables/slogans";
+
+//Components
 import Advantage from "../components/Advantage/Advantage";
+import SpinLoader from "../components/SpinLoader/SpinLoader";
 
 //Home page
 export default function Home(): JSX.Element {
@@ -26,7 +28,7 @@ export default function Home(): JSX.Element {
         />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Accueil" />
+        <meta property="og:title" content="Home page" />
         <meta
           property="og:description"
           content="What would you like the power to do? For you and your family, your business and your community. At ArgentBank, our purpose is to help make financial lives better through the power of every connection."
