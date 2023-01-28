@@ -18,7 +18,7 @@ export default function Button({
       type={buttonType}
       onClick={(e) => {
         e.preventDefault();
-        callbackFunction(e);
+        !!callbackFunction && callbackFunction(e);
       }}
       data-testid={`${className} button`}
     >

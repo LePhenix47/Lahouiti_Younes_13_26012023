@@ -2,13 +2,15 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 /*
-//The _document file is for the structure in the entire app
-//This file should only be changed if you want to:
-//  -Add a meta tag to every single page
-//  -Add a class to the body
-//  -Change the langage of the website
-*/
-
+ */
+/**
+ *The _document file is for the structure in the entire app
+ *This file should only be changed if you want to:
+ *  -Add a meta tag to every single page
+ *  -Add a class to the body
+ *  -Change the langage of the website
+ *
+ */
 export default function Document(): JSX.Element {
   return (
     <Html lang="en">

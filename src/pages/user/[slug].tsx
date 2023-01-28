@@ -1,5 +1,5 @@
 //Next
-import Button from "@/components/Button/Button";
+import Button from "../../components/Button/Button";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 
@@ -7,6 +7,10 @@ import { NextRouter, useRouter } from "next/router";
 import { log } from "../../utils/functions/helperFunctions";
 
 //This is the page of the user
+/**
+ * User page
+ * Route: /user/:userId
+ *  */
 export default function User(): JSX.Element {
   const urlPath: NextRouter = useRouter();
 

@@ -8,6 +8,9 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helperFunctions";
 
+/**
+ * Sign-in page, route: /sign-in
+ */
 export default function SignIn(): JSX.Element {
   const router: NextRouter = useRouter();
 

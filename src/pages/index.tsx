@@ -9,7 +9,9 @@ import { slogans } from "../utils/variables/slogans";
 import AdvantageCard from "../components/AdvantageCard/AdvantageCard";
 import SpinLoader from "../components/SpinLoader/SpinLoader";
 
-//Home page
+/**
+ * Home page, route: /
+ */
 export default function Home(): JSX.Element {
   return (
     <>

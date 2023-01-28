@@ -4,22 +4,23 @@ import CookieService from "@/utils/services/cookies.service";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 
+/**
+ * Header of the page
+ */
 export default function Header(): JSX.Element {
   //We're going to use the router hook to get the path the user is in
   const route: NextRouter = useRouter();
 
-  //We create contextualized constants
+  //We create contextualized constants to make the code more inteligible
   const HOME_PAGE: string = "/";
   const LOGIN_PAGE: string = "/sign-in";
   const USER_PAGE: string = "/user";
 
   //We create constants to contextualize structural conditions
-  const isHomeOrLoginPage =
+  const isHomeOrLoginPage: boolean =
     route.asPath === HOME_PAGE || route.asPath.includes(LOGIN_PAGE);
 
-  const isUserPage = route.asPath.includes(USER_PAGE);
-
-  log({ route });
+  const isUserPage: boolean = route.asPath.includes(USER_PAGE);
 
   //We manage the jwt with our cookie service
   const cookieService: CookieService = new CookieService();
@@ -52,6 +53,11 @@ export default function Header(): JSX.Element {
             </Link>
           </li>
           <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
+            <Link href="/user">
+              <i className="fa fa-user-circle header__sign-in-logo"></i> Tony
+            </Link>
+          </li>
+          <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
             <Link
               href="/"
               onClick={() => {
@@ -59,11 +65,6 @@ export default function Header(): JSX.Element {
               }}
             >
               <i className="fa fa-sign-out"></i> Log-out
-            </Link>
-          </li>
-          <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
-            <Link href="/user">
-              <i className="fa fa-user-circle header__sign-in-logo"></i> Tony
             </Link>
           </li>
         </ul>
