@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 //Utils
-import { log } from "../../utils/functions/helperFunctions";
+import { log } from "../../utils/functions/helper-functions";
 
 export default function AdvantageCard({
   image,

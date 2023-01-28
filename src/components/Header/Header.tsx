@@ -4,7 +4,7 @@ import Link from "next/link";
 
 //Utils
 import CookieService from "@/utils/services/cookies.service";
-import { log } from "@/utils/functions/helperFunctions";
+import { log } from "@/utils/functions/helper-functions";
 
 /**
  * Header of the page

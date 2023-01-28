@@ -6,7 +6,7 @@ import { NextRouter, useRouter } from "next/router";
 import Button from "../../components/Button/Button";
 
 //Utils
-import { log } from "../../utils/functions/helperFunctions";
+import { log } from "../../utils/functions/helper-functions";
 
 /**
  * Sign-in page

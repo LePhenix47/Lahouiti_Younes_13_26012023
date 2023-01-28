@@ -7,7 +7,7 @@ import AccountCard from "@/components/AccountCard/AccountCard";
 import Button from "../../components/Button/Button";
 
 //Utils
-import { log } from "../../utils/functions/helperFunctions";
+import { log } from "../../utils/functions/helper-functions";
 import { savingsData } from "../../utils/variables/savings-data";
 
 //Mocks

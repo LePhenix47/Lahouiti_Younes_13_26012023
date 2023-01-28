@@ -1,4 +1,4 @@
-import { formatCurrencyValue } from "@/utils/functions/helperFunctions";
+import { formatCurrencyValue } from "@/utils/functions/helper-functions";
 import React from "react";
 import Button from "../Button/Button";
 
