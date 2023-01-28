@@ -159,6 +159,7 @@ export function formatCurrencyValue(
   const formatter = new Intl.NumberFormat(undefined, {
     currency: currencyValue,
     style: "currency",
+    maximumFractionDigits: 2,
   });
 
   return formatter.format(number);

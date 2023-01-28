@@ -1,4 +1,6 @@
+import { formatCurrencyValue } from "@/utils/functions/helperFunctions";
 import React from "react";
+import Button from "../Button/Button";
 
 /**
  * Card for one of the account of the user
@@ -12,5 +14,23 @@ export default function AccountCard({
   balance: number;
   cardClass: string;
 }): JSX.Element {
-  return <div className={cardClass}>AccountCard</div>;
+  const formattedCurrency: string = formatCurrencyValue(balance);
+
+  return (
+    <div className={cardClass}>
+      <div className={`${cardClass}-text`}>
+        <h3 className={`${cardClass}-title`}>Argent Bank {type}</h3>
+        <p className={`${cardClass}-balance`}>{formattedCurrency}</p>
+        <p className={`${cardClass}-phrase`}>Available Balance</p>
+      </div>
+      <div className={`${cardClass}-button-container`}>
+        <Button
+          buttonText="View transactions"
+          buttonType="button"
+          className={`${cardClass}-button`}
+          callbackFunction={null}
+        />
+      </div>
+    </div>
+  );
 }

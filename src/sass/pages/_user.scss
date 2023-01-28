@@ -1,15 +1,23 @@
 @use "../utils/" as *;
 
 .user {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    padding-bottom: 30px;
+
     background-color: var(--bg-tertiary);
     min-height: 700px;
 
-    display: flex;
-    justify-content: center;
-
     &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
         width: 80%;
         margin-top: 20px;
+
     }
 
     &__name-settings {
@@ -23,16 +31,82 @@
         text-align: center;
     }
 
-    &__button {
+    &__subtitle {
         color: var(--color-quinary);
+    }
+
+    &__button {
+        // color: var(--color-quinary);
         padding: 10px;
         font-size: 13px;
     }
 
-    &__accounts {}
+    &__accounts {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-    &__subtitle {
-        color: var(--color-quinary);
+    &__accounts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__account-card {
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet-only {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @include mobile-only {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        background-color: var(--bg-primary);
+        padding: 24px;
+
+        &-text {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        &-title {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        &-balance {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        &-phrase {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        &-button-container {
+            @include center-flex-column;
+        }
+
+        &-button {
+            padding: 8px;
+
+            @include tablet-only {
+                width: 100%;
+            }
+
+            @include mobile-only {
+                width: 100%;
+            }
+        }
     }
 
 

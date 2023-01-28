@@ -23,6 +23,8 @@ export default function SignIn(): JSX.Element {
    */
   function sendForm(event: any): void {
     log({ event });
+
+    //
     router.push("/user/1");
   }
 

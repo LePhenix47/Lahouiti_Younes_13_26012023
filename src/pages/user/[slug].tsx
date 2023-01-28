@@ -8,6 +8,9 @@ import Button from "../../components/Button/Button";
 
 //Utils
 import { log } from "../../utils/functions/helperFunctions";
+import { savingsData } from "../../utils/variables/savings-data";
+
+//Mocks
 
 //This is the page of the user
 /**
@@ -21,7 +24,7 @@ export default function User(): JSX.Element {
   //
   const userId: string | string[] | undefined = urlPath.query.slug;
 
-  // log({ urlPath }, urlPath.query.slug);
+  log({ savingsData });
 
   return (
     <>
@@ -45,7 +48,7 @@ export default function User(): JSX.Element {
         {/*
          <!--Title--> 
          */}
-        <title>{userId}</title>
+        <title>UserId: {userId}</title>
 
         {/*
          <!--Page logo--> 
@@ -72,9 +75,23 @@ export default function User(): JSX.Element {
             <h2 className="user__subtitle">Accounts</h2>
 
             <div className="user__accounts-container">
-              <AccountCard type="" balance={0} cardClass="user__account-card" />
-              <AccountCard type="" balance={0} cardClass="user__account-card" />
-              <AccountCard type="" balance={0} cardClass="user__account-card" />
+              {/* <AccountCard type="" balance={0} cardClass="user__account-card" />
+              <AccountCard
+                type="Savings (x6712)"
+                balance={10_928.42}
+                cardClass="user__account-card"
+              />
+              <AccountCard type="" balance={0} cardClass="user__account-card" /> */}
+              {savingsData.map(({ type, balance }, index) => {
+                return (
+                  <AccountCard
+                    type={type}
+                    balance={balance}
+                    cardClass="user__account-card"
+                    key={`${index}-${type}`}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
