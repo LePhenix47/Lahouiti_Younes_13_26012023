@@ -9,11 +9,18 @@ import Button from "../../components/Button/Button";
 import { log } from "../../utils/functions/helperFunctions";
 
 /**
- * Sign-in page, route: /sign-in
+ * Sign-in page
+ *
+ * Route: `/sign-in/`
  */
 export default function SignIn(): JSX.Element {
   const router: NextRouter = useRouter();
 
+  //Should use the useRef() hook here to get the values of the inputs
+
+  /**
+   * Functions that sends the form to the Back-end
+   */
   function sendForm(event: any): void {
     log({ event });
     router.push("/user/1");

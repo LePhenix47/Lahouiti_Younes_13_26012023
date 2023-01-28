@@ -1,8 +1,10 @@
 //Next
-import { log } from "@/utils/functions/helperFunctions";
-import CookieService from "@/utils/services/cookies.service";
-import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
+import Link from "next/link";
+
+//Utils
+import CookieService from "@/utils/services/cookies.service";
+import { log } from "@/utils/functions/helperFunctions";
 
 /**
  * Header of the page
@@ -26,7 +28,7 @@ export default function Header(): JSX.Element {
   const cookieService: CookieService = new CookieService();
 
   /**
-   * Function that deletes the JSON Web Token from the cookies and logs out the user
+   * Function that deletes the `JSON Web Token` (JWT) from the cookies and logs out the user
    */
   function deleteJWT(): void {
     cookieService.deleteCookieByName("jwt");

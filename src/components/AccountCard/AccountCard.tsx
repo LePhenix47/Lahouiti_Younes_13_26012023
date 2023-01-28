@@ -6,9 +6,11 @@ import React from "react";
 export default function AccountCard({
   type,
   balance,
+  cardClass,
 }: {
   type: string;
   balance: number;
+  cardClass: string;
 }): JSX.Element {
-  return <div>AccountCard</div>;
+  return <div className={cardClass}>AccountCard</div>;
 }

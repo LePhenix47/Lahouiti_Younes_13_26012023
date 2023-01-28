@@ -11,8 +11,9 @@ import { log } from "../../utils/functions/helperFunctions";
 
 //This is the page of the user
 /**
- * User page,
- * Route: /user/:userId
+ * User page
+ *
+ * Route: `/user/:userId/`
  *  */
 export default function User(): JSX.Element {
   const urlPath: NextRouter = useRouter();
@@ -71,9 +72,9 @@ export default function User(): JSX.Element {
             <h2 className="user__subtitle">Accounts</h2>
 
             <div className="user__accounts-container">
-              <AccountCard type="" balance={0} />
-              <AccountCard type="" balance={0} />
-              <AccountCard type="" balance={0} />
+              <AccountCard type="" balance={0} cardClass="user__account-card" />
+              <AccountCard type="" balance={0} cardClass="user__account-card" />
+              <AccountCard type="" balance={0} cardClass="user__account-card" />
             </div>
           </div>
         </div>

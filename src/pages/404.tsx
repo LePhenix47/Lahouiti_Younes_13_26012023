@@ -1,7 +1,9 @@
 import Head from "next/head";
 import React from "react";
 
-//This page will show when the user attempts to enter page that does not exist
+/**
+ * This page will show when the user attempts to enter a page that does not exist
+ */
 export default function Error404(): JSX.Element {
   return (
     <>

@@ -7,13 +7,13 @@ import { cookieType, arrayOfCookiesType } from "../types/cookie-service-types";
  *
  * example:
  *
- *  document.cookie = "test = a";
+ * ` document.cookie = "test = a";`
  *
- *  document.cookie = "test2 = b"
+ * ` document.cookie = "test2 = b";`
  *
- *  document.cookie = "test3 = c; expires='0'"
+ * ` document.cookie = "test3 = c; expires='0'";`
  *
- *  console.log(document.cookie) → "test=a;test2=b"
+ * `console.log(document.cookie)` → `"test=a;test2=b"`
  */
 export default class CookieService {
   constructor() {}

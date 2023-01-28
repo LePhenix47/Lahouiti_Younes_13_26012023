@@ -7,7 +7,7 @@ import { render, screen } from "@testing-library/react";
 describe("The header component", () => {
   //
   it("should render without crashing", async () => {
-    render(<AccountCard type="x" balance={0} />);
+    render(<AccountCard type="x" balance={0} cardClass="" />);
   });
 
   //
