@@ -9,6 +9,7 @@ $color-primary: #2c3e50;
 $color-secondary: #00bc78;
 $color-tertiary: #005834;
 $color-quaternary: white;
+$color-quinary: white;
 
 $border-top-color: #ccc;
 
@@ -35,6 +36,7 @@ $image-inversion: 0%;
     --color-secondary:#{$color-secondary};
     --color-tertiary:#{$color-tertiary};
     --color-quaternary:#{$color-quaternary};
+    --color-quinary:#{$color-quinary};
 
     --border-top-color:#{$border-top-color};
     --input-border-color:#{$input-border-color};

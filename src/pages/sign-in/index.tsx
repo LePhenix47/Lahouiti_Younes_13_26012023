@@ -1,11 +1,19 @@
-import Button from "@/components/Button/Button";
-import { log } from "@/utils/functions/helperFunctions";
+//Next
 import Head from "next/head";
-import React from "react";
+import { NextRouter, useRouter } from "next/router";
+
+//Components
+import Button from "../../components/Button/Button";
+
+//Utils
+import { log } from "../../utils/functions/helperFunctions";
 
 export default function SignIn(): JSX.Element {
-  function sendForm(event: any) {
+  const router: NextRouter = useRouter();
+
+  function sendForm(event: any): void {
     log({ event });
+    router.push("/user/1");
   }
 
   return (
@@ -83,6 +91,7 @@ export default function SignIn(): JSX.Element {
 
           <div className="sign-in__button-container">
             <Button
+              buttonText="Sign In"
               className="sign-in__button"
               buttonType="submit"
               callbackFunction={sendForm}

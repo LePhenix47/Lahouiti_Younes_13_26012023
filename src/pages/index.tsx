@@ -6,7 +6,7 @@ import Head from "next/head";
 import { slogans } from "../utils/variables/slogans";
 
 //Components
-import Advantage from "../components/Advantage/Advantage";
+import AdvantageCard from "../components/AdvantageCard/AdvantageCard";
 import SpinLoader from "../components/SpinLoader/SpinLoader";
 
 //Home page
@@ -66,7 +66,7 @@ export default function Home(): JSX.Element {
       <section className="main-page__advantages">
         {slogans.map(({ image, title, text }, index) => {
           return (
-            <Advantage
+            <AdvantageCard
               image={image}
               title={title}
               text={text}

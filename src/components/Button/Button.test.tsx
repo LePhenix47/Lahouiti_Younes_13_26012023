@@ -8,7 +8,12 @@ describe("The button component", () => {
   //
   it("should render without crashing", async () => {
     render(
-      <Button className="" buttonType="button" callbackFunction={() => {}} />
+      <Button
+        buttonText=""
+        className=""
+        buttonType="button"
+        callbackFunction={() => {}}
+      />
     );
   });
   //
@@ -20,6 +25,7 @@ describe("The button component", () => {
 
     render(
       <Button
+        buttonText=""
         className=""
         buttonType="button"
         callbackFunction={() => {

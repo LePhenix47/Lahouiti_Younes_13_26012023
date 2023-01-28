@@ -24,7 +24,9 @@ export default function Header(): JSX.Element {
   //We manage the jwt with our cookie service
   const cookieService: CookieService = new CookieService();
 
-  //Function that deletes the JSON Web Token from the cookies → logs out user
+  /**
+   * Function that deletes the JSON Web Token from the cookies and logs out the user
+   */
   function deleteJWT(): void {
     cookieService.deleteCookieByName("jwt");
   }

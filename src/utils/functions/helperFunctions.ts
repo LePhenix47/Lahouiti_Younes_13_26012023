@@ -129,9 +129,36 @@ export function toPercent(number: number): string {
  *The user lives in Italy and we have: const number = 1_930 → returns "1.930"
  *If they lived in the US and we have: const number = 1_930 → returns "1,930"
  */
-export function numberSeparatorLocale(number: number): string {
+export function formatNumberValue(number: number): string {
   const formatter: Intl.NumberFormat = new Intl.NumberFormat(undefined, {
     maximumSignificantDigits: 3,
+  });
+
+  return formatter.format(number);
+}
+
+/**
+ *
+ * Function that formats dollars currency values by the user locale
+ *
+ * Has 2 parameters:
+ *
+ * The number to format and the currency (by default in US dollars)
+ *
+ *
+ * Example, we want to format 24 dollars:
+ *
+ * If the user lives in the US → $24.00
+ *
+ * If the user lives in the UK → 24.00$
+ */
+export function formatCurrencyValue(
+  number: number,
+  currencyValue: string = "USD"
+): string {
+  const formatter = new Intl.NumberFormat(undefined, {
+    currency: currencyValue,
+    style: "currency",
   });
 
   return formatter.format(number);

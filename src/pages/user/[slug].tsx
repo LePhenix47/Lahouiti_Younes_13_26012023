@@ -1,4 +1,5 @@
 //Next
+import Button from "@/components/Button/Button";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 
@@ -44,11 +45,25 @@ export default function User(): JSX.Element {
         <link rel="icon" type="image/png" href="/images/svg/icon.svg" />
       </Head>
       <section className="user">
-        <h1 className="user__title">
-          Welcome back
-          <br />
-          Firstname Lastname!
-        </h1>
+        <div className="user__container">
+          <div className="user__name-settings">
+            <h1 className="user__title">
+              Welcome back
+              <br />
+              Firstname Lastname!
+            </h1>
+            <Button
+              buttonText="Edit name"
+              buttonType="button"
+              className="user__button"
+              callbackFunction={undefined}
+            />
+          </div>
+
+          <div className="user__accounts">
+            <h2 className="user__subtitle">Accounts</h2>
+          </div>
+        </div>
       </section>
     </>
   );

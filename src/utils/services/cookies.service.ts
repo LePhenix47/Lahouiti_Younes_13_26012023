@@ -1,3 +1,6 @@
+import { cookieType, arrayOfCookiesType } from "../types/cookie-service-types";
+
+//Utility class that handles cookies
 export default class CookieService {
   //local variables
   constructor() {}
@@ -14,8 +17,8 @@ export default class CookieService {
     */
 
   //Creates a cookie
-  setCookie(name: string, value: any, canExpire?: boolean): string {
-    if (canExpire) {
+  setCookie(name: string, value: any, cookieCanExpire?: boolean): string {
+    if (cookieCanExpire) {
       //Gets the time in ms from the next week
       let todayInMilliseconds: number = new Date().getTime();
       let sevenDaysInMilliseconds: number = 1000 * 60 * 60 * 24 * 7;
@@ -30,25 +33,17 @@ export default class CookieService {
     return (document.cookie = `${name}=${value}`);
   }
 
-  //Recovers a cookie by name
-  getCookieByName(cookieNameToFind: string): {
-    name: string;
-    value: string;
-  } | null {
+  //Recovers a formated cookie by name
+  getCookieByName(cookieNameToFind: string): cookieType | null {
     //We get all the cookies
-    const cookiesArray:
-      | {
-          name: string;
-          value: string;
-        }[]
-      | string = this.getAllCookies(false);
+    const cookiesArray: arrayOfCookiesType | string = this.getAllCookies(false);
 
     //We iterate through the array of cookies and find the cookie wanted
     for (const cookieObject of cookiesArray) {
-      //@ts-ignore
-      const { name, value } = cookieObject;
+      // @ts-ignore
+      const { name, value }: string | cookieType = cookieObject;
 
-      const cookieHasBeenFound = name === cookieNameToFind;
+      const cookieHasBeenFound: boolean = name === cookieNameToFind;
 
       if (cookieHasBeenFound) {
         //@ts-ignore
@@ -59,8 +54,8 @@ export default class CookieService {
     return null;
   }
 
-  //Changes the value of a cookie by name
-  changeCookieValue(nameOfCookie: string, newValue: any): void {
+  //Changes the value of a cookie by its name
+  patchCookieValue(nameOfCookie: string, newValue: any): void {
     document.cookie = `${nameOfCookie}=${newValue}`;
   }
 
@@ -71,22 +66,17 @@ export default class CookieService {
 
   //Gets all cookies stored in the website
   //Returns either a string or an array of objects with the cookie name and value
-  getAllCookies(rawCookies: boolean = false):
-    | {
-        name: string;
-        value: string;
-      }[]
-    | string {
+  getAllCookies(rawCookies: boolean = false): arrayOfCookiesType | string {
     if (rawCookies) {
       return document.cookie;
     }
 
-    let rawArrayOfCookies = document.cookie.split(";");
-    const formattedArrayOfCookies = [];
+    let rawArrayOfCookies: string[] = document.cookie.split(";");
+    const formattedArrayOfCookies: any[] = [];
 
     for (const cookie of rawArrayOfCookies) {
-      let name = cookie.split("=")[0];
-      let value = cookie.split("=")[1];
+      let name: string = cookie.split("=")[0];
+      let value: string = cookie.split("=")[1];
 
       formattedArrayOfCookies.push({ name, value });
     }

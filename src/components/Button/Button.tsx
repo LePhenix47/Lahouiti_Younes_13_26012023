@@ -2,13 +2,15 @@
 import { buttonTypes } from "../../utils/types/button-types";
 
 export default function Button({
+  buttonText,
   className,
   buttonType,
   callbackFunction,
 }: {
+  buttonText: string;
   className: string | undefined;
   buttonType: buttonTypes;
-  callbackFunction: any | undefined;
+  callbackFunction: any | undefined | null;
 }) {
   return (
     <button
@@ -18,9 +20,9 @@ export default function Button({
         e.preventDefault();
         callbackFunction(e);
       }}
-      data-testid="button"
+      data-testid={`${className} button`}
     >
-      Sign In
+      {buttonText}
     </button>
   );
 }

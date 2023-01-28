@@ -1,0 +1,26 @@
+@use "../utils/" as *;
+
+.user {
+    background-color: var(--bg-tertiary);
+    min-height: 700px;
+
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        width: 80%;
+    }
+
+    &__name-settings {
+
+        @include center-flex-column;
+    }
+
+    &__title {
+        color: var(--color-quinary);
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+}

@@ -17,10 +17,11 @@
 @forward "./layout/footer";
 
 //Pages
-@forward "./pages/main-page";
-@forward "./pages/sign-in";
 @forward "./pages/404-page";
 @forward "./pages/500-page";
+@forward "./pages/main-page";
+@forward "./pages/sign-in";
+@forward "./pages/user";
 
 //Themes
 @forward "./themes/dark-theme";
