@@ -75,13 +75,6 @@ export default function User(): JSX.Element {
             <h2 className="user__subtitle">Accounts</h2>
 
             <div className="user__accounts-container">
-              {/* <AccountCard type="" balance={0} cardClass="user__account-card" />
-              <AccountCard
-                type="Savings (x6712)"
-                balance={10_928.42}
-                cardClass="user__account-card"
-              />
-              <AccountCard type="" balance={0} cardClass="user__account-card" /> */}
               {savingsData.map(({ type, balance }, index) => {
                 return (
                   <AccountCard

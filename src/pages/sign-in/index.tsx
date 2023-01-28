@@ -25,7 +25,7 @@ export default function SignIn(): JSX.Element {
     log({ event });
 
     //
-    router.push("/user/1");
+    router.push("/user/");
   }
 
   return (
