@@ -1,6 +1,9 @@
 //Utils
 import { buttonTypes } from "../../utils/types/button-types";
 
+/**
+ * Button with default styling
+ */
 export default function Button({
   buttonText,
   className,

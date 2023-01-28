@@ -8,7 +8,13 @@ import PageLayout from "../components/PageLayout/PageLayout";
 import "../sass/main.scss";
 
 /**
- * Component where all the other components will pass through
+ * Root component where all the pages will pass through
+ *
+ * This file should be changed only if:
+ *
+ * -You want to set a page layout
+ *
+ * -You want to add a provider for a global state (for React, Redux, TanStackQuery...)
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (

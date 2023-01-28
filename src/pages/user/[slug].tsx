@@ -1,7 +1,10 @@
 //Next
-import Button from "../../components/Button/Button";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
+
+//Components
+import AccountCard from "@/components/AccountCard/AccountCard";
+import Button from "../../components/Button/Button";
 
 //Utils
 import { log } from "../../utils/functions/helperFunctions";
@@ -66,6 +69,12 @@ export default function User(): JSX.Element {
 
           <div className="user__accounts">
             <h2 className="user__subtitle">Accounts</h2>
+
+            <div className="user__accounts-container">
+              <AccountCard type="" balance={0} />
+              <AccountCard type="" balance={0} />
+              <AccountCard type="" balance={0} />
+            </div>
           </div>
         </div>
       </section>
