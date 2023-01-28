@@ -1,22 +1,25 @@
 import { cookieType, arrayOfCookiesType } from "../types/cookie-service-types";
 
-//Utility class that handles cookies
+/**
+ * Utility class that handles cookies
+ *
+ * INFO: Even though cookies are stored in a string, they aren't overridden using these methods
+ *
+ * example:
+ *
+ *  document.cookie = "test = a";
+ *
+ *  document.cookie = "test2 = b"
+ *
+ *  document.cookie = "test3 = c; expires='0'"
+ *
+ *  console.log(document.cookie) → "test=a;test2=b"
+ */
 export default class CookieService {
-  //local variables
   constructor() {}
-
-  /*    
-    INFO:Even though cookies are stored in a string, they aren't overridden when creating a new one
-    
-    ex: 
-    document.cookie = "test = a";
-    document.cookie = "test2 = b"
-    document.cookie = "test3 = c; expires='0'"
-
-    console.log(document.cookie) → "test=a;test2=b"
-    */
-
-  //Creates a cookie
+  /**
+   * Creates a cookie
+   */
   setCookie(name: string, value: any, cookieCanExpire?: boolean): string {
     if (cookieCanExpire) {
       //Gets the time in ms from the next week
@@ -33,7 +36,9 @@ export default class CookieService {
     return (document.cookie = `${name}=${value}`);
   }
 
-  //Recovers a formated cookie by name
+  /**
+   * Recovers a cookie by its name
+   */
   getCookieByName(cookieNameToFind: string): cookieType | null {
     //We get all the cookies
     const cookiesArray: arrayOfCookiesType | string = this.getAllCookies(false);
@@ -54,18 +59,24 @@ export default class CookieService {
     return null;
   }
 
-  //Changes the value of a cookie by its name
+  /**
+   * Changes the value of a cookie by its name
+   */
   patchCookieValue(nameOfCookie: string, newValue: any): void {
     document.cookie = `${nameOfCookie}=${newValue}`;
   }
 
-  //Deletes a cookie by their name
+  /**
+   * Deletes a cookie by their name
+   */
   deleteCookieByName(nameOfCookie: string): void {
     document.cookie = `${nameOfCookie}=0; expires=${new Date(0)}`;
   }
 
-  //Gets all cookies stored in the website
-  //Returns either a string or an array of objects with the cookie name and value
+  /**
+   * Gets all cookies stored in the website
+   * Returns either a string or an array of objects with the cookie name and value
+   */
   getAllCookies(rawCookies: boolean = false): arrayOfCookiesType | string {
     if (rawCookies) {
       return document.cookie;
@@ -84,7 +95,9 @@ export default class CookieService {
     return formattedArrayOfCookies;
   }
 
-  //Deletes all cookies stored in the website
+  /**
+   * Deletes all cookies stored in the website
+   */
   deleteAllCookies(): void {
     let rawArrayOfCookies: string[] = document.cookie.split(";");
 
