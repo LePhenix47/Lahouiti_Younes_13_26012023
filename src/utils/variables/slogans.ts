@@ -3,6 +3,9 @@ import chatIcon from "../../../public/images/svg/icon-chat.svg";
 import moneyIcon from "../../../public/images/svg/icon-money_1.svg";
 import securityIcon from "../../../public/images/svg/icon-security_1.svg";
 
+/**
+ * Slogans for the home page
+ */
 export const slogans: {
   image: any;
   title: string;

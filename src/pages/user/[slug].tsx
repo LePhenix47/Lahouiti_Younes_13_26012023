@@ -8,7 +8,7 @@ import { log } from "../../utils/functions/helperFunctions";
 
 //This is the page of the user
 /**
- * User page
+ * User page,
  * Route: /user/:userId
  *  */
 export default function User(): JSX.Element {

@@ -9,11 +9,11 @@
 
     &__container {
         width: 80%;
+        margin-top: 20px;
     }
 
     &__name-settings {
-
-        @include center-flex-column;
+        @include center-flex-column(25px);
     }
 
     &__title {
@@ -22,5 +22,18 @@
         font-weight: 700;
         text-align: center;
     }
+
+    &__button {
+        color: var(--color-quinary);
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    &__accounts {}
+
+    &__subtitle {
+        color: var(--color-quinary);
+    }
+
 
 }
