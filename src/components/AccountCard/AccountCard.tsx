@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../Button/Button";
 
 /**
- * Card for one of the account of the user
+ * Card for a user's account
  */
 export default function AccountCard({
   type,

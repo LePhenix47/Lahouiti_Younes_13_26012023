@@ -158,6 +158,20 @@ npm run dev:server
 
 ## 2.3 Routes and endpoints
 
+The API of this server is separated in 2 routes
+
+- The user route:
+
+| HTTP Verb | Endpoints     | Parameters | Payload of the request                                                                                  | Possible code statuses                                               | Payload of the response                                                                                     | Description of the body                                                 |
+| --------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| POST      | /user/login/  | -          | {<br>   "email": string,<br>   "password": string<br>}                                                  | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {<br>  "token": string<br>}                                                                                 | Gives a JSON Web Token when the user fills the<br>form fields correctly |
+| POST      | /user/signup/ | -          | {<br>  "email": string,<br>  "password": string,<br>  "firstName": string,<br>  "lastName": string<br>} | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {<br> "status":0,<br> "message": string,<br> "body":{<br>   "id":string,<br>   "email": string,<br>  }<br>} | Creates the user in the database and sends back an id and an email      |
+| POST      | /user/profile | -          | {<br>"header": {<br> "Authorization": string<br>}<br>"body":{<br><br>}<br>}                             | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {}                                                                                                          | WIP                                                                     |
+| PUT       | /user/profile | -          | {}                                                                                                      | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {}                                                                                                          | WIP                                                                     |
+
+- The transactions route:
+
+WIP
 
 ## 2.4 Other information
 

@@ -19,10 +19,7 @@ import { savingsData } from "../../utils/variables/savings-data";
  * Route: `/user/:userId/`
  *  */
 export default function User(): JSX.Element {
-  const urlPath: NextRouter = useRouter();
-
   //
-  const userId: string | string[] | undefined = urlPath.query.slug;
 
   log({ savingsData });
 
@@ -48,7 +45,7 @@ export default function User(): JSX.Element {
         {/*
          <!--Title--> 
          */}
-        <title>UserId: {userId}</title>
+        <title>User</title>
 
         {/*
          <!--Page logo--> 

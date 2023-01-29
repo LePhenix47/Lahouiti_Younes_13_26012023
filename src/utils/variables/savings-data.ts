@@ -4,11 +4,11 @@ export const savingsData: {
 }[] = [
   {
     type: "Checking (x8349)",
-    balance: 2082.79,
+    balance: 2_082.79,
   },
   {
     type: "Savings (x6712)",
-    balance: 10928.42,
+    balance: 10_928.42,
   },
   {
     type: "Credit Card (x8349)",

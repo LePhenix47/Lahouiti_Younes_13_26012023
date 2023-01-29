@@ -55,8 +55,8 @@ export default function Header(): JSX.Element {
             </Link>
           </li>
           <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
-            <Link href="/user">
-              <i className="fa fa-user-circle header__sign-in-logo"></i> Tony
+            <Link href="/users">
+              <i className="fa fa-user-circle header__sign-in-logo"></i> User
             </Link>
           </li>
           <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
