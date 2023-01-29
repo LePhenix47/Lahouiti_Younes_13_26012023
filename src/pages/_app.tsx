@@ -17,6 +17,7 @@ import PageLayout from "../components/PageLayout/PageLayout";
 
 //SASS
 import "../sass/main.scss";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 /**
  * Root component where all the pages will pass through
@@ -26,6 +27,8 @@ import "../sass/main.scss";
  * -You want to set a page layout
  *
  * -You want to add a provider for a global state (for React, Redux, TanStackQuery...)
+ *
+ * This file **must not** be nested inside a React Fragment
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -35,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           <Component {...pageProps} />
         </PageLayout>
       </ReduxProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

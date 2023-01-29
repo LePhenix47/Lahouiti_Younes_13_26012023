@@ -76,8 +76,8 @@ This project has a responsive design and a dark/light theme
 
 ## 1.2 Libraries used
 
-- Jest with React Testing Library
-- Redux with React-Redux and Immer
+- Jest with: React Testing Library
+- Redux with: React-Redux, Redux Toolkit and Immer
 - TanStack Query a.k.a React Query
 
 <a href="https://jestjs.io/" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" width="36" height="36" alt="Jest" /></a>
