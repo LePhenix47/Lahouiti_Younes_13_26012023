@@ -6,10 +6,20 @@ import Link from "next/link";
 import CookieService from "@/utils/services/cookies.service";
 import { log } from "@/utils/functions/helper-functions";
 
+//Redux
+import { useSelector } from "react-redux";
+
 /**
  * Header of the page
  */
 export default function Header(): JSX.Element {
+  //We IMPORT the value of the logging state of the user
+  const userIsLoggedIn = useSelector((state: any) => {
+    return state.isLoggedIn;
+  });
+
+  log({ userIsLoggedIn });
+
   //We're going to use the router hook to get the path the user is in
   const route: NextRouter = useRouter();
 

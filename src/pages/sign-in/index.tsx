@@ -8,6 +8,9 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 
+//Redux
+import { useDispatch } from "react-redux";
+
 /**
  * Sign-in page
  *
@@ -15,6 +18,9 @@ import { log } from "../../utils/functions/helper-functions";
  */
 export default function SignIn(): JSX.Element {
   const router: NextRouter = useRouter();
+
+  //We EXPORT the value of the logging state
+  const dispatch = useDispatch();
 
   //Should use the useRef() hook here to get the values of the inputs
 

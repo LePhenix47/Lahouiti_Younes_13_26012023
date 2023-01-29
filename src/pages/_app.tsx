@@ -1,6 +1,13 @@
 //Next
 import type { AppProps } from "next/app";
 
+//Redux
+//React-Redux
+import { Provider } from "react-redux";
+
+//Store
+import { store } from "../redux/utils/store/store";
+
 //Components
 import PageLayout from "../components/PageLayout/PageLayout";
 
@@ -18,8 +25,12 @@ import "../sass/main.scss";
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <PageLayout>
-      <Component {...pageProps} />
-    </PageLayout>
+    <>
+      <Provider store={store}>
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
+      </Provider>
+    </>
   );
 }
