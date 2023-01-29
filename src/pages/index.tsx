@@ -10,7 +10,9 @@ import AdvantageCard from "../components/AdvantageCard/AdvantageCard";
 import SpinLoader from "../components/SpinLoader/SpinLoader";
 
 /**
- * Home page, route: /
+ * Home page
+ *
+ * Route: `/`
  */
 export default function Home(): JSX.Element {
   return (

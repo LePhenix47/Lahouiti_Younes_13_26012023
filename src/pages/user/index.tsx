@@ -9,6 +9,7 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 import { savingsData } from "../../utils/variables/savings-data";
+import { useState } from "react";
 
 //Mocks
 
@@ -16,12 +17,26 @@ import { savingsData } from "../../utils/variables/savings-data";
 /**
  * User page
  *
- * Route: `/user/:userId/`
+ * Route: `/user/`
  *  */
 export default function User(): JSX.Element {
-  //
+  //Local state to open/close the
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  /**
+   * Toggles the settings for the name of the user
+   */
+  function toggleNameSettings(): void {
+    setIsOpen(!isOpen);
+  }
 
-  log({ savingsData });
+  /**
+   * Function that saves the changes made to the user
+   */
+  function saveNameSettings(): void {
+    //Make an API request here
+
+    setIsOpen(!isOpen);
+  }
 
   return (
     <>
@@ -58,13 +73,39 @@ export default function User(): JSX.Element {
             <h1 className="user__title">
               Welcome back
               <br />
-              Firstname Lastname!
+              {isOpen ? "" : "Firstname Lastname!"}
             </h1>
+            <div
+              className={`user__name-inputs-buttons ${
+                isOpen ? "show" : "hide"
+              }`}
+            >
+              <input
+                type="text"
+                className={`user__input ${isOpen ? "show" : "hide"}`}
+              />
+              <input
+                type="text"
+                className={`user__input ${isOpen ? "show" : "hide"}`}
+              />
+              <Button
+                buttonText="Save"
+                buttonType="button"
+                className={`user__save-button ${isOpen ? "show" : "hide"}`}
+                callbackFunction={saveNameSettings}
+              />
+              <Button
+                buttonText="Cancel"
+                buttonType="button"
+                className={`user__cancel-button ${isOpen ? "show" : "hide"}`}
+                callbackFunction={toggleNameSettings}
+              />
+            </div>
             <Button
               buttonText="Edit name"
               buttonType="button"
-              className="user__button"
-              callbackFunction={undefined}
+              className={`user__button ${isOpen ? "hide" : "show"}`}
+              callbackFunction={toggleNameSettings}
             />
           </div>
 

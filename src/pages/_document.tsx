@@ -6,7 +6,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 /**
  *The _document file is a file for the structure in the entire app
 
- *This file should only be changed if you want to:
+ *This file should *only be changed if you want to*:
 
  *  -Add a meta tag to every single page
 

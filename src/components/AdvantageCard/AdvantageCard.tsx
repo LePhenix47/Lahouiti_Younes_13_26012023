@@ -4,6 +4,9 @@ import Image from "next/image";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 
+/**
+ * Card for the home page for the different slogans of the website
+ */
 export default function AdvantageCard({
   image,
   title,

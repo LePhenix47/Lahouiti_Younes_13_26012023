@@ -10,7 +10,7 @@ import "../sass/main.scss";
 /**
  * Root component where all the pages will pass through
  *
- * This file should be changed only if:
+ * This file should be changed *only if*:
  *
  * -You want to set a page layout
  *
