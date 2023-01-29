@@ -160,7 +160,7 @@ npm run dev:server
 
 The API of this server is separated in 2 routes
 
-- The user route:
+- The `user/` route:
 
 | HTTP Verb | Endpoints     | Parameters | Payload of the request                                                                                  | Possible code statuses                                               | Payload of the response                                                                                     | Description of the body                                                 |
 | --------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -169,7 +169,7 @@ The API of this server is separated in 2 routes
 | POST      | /user/profile | -          | {<br>"header": {<br> "Authorization": string<br>}<br>"body":{<br><br>}<br>}                             | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {}                                                                                                          | WIP                                                                     |
 | PUT       | /user/profile | -          | {}                                                                                                      | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {}                                                                                                          | WIP                                                                     |
 
-- The transactions route:
+- The `transactions/` route:
 
 WIP
 
