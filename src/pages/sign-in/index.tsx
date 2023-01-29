@@ -10,6 +10,7 @@ import { log } from "../../utils/functions/helper-functions";
 
 //Redux
 import { useDispatch } from "react-redux";
+import { logInAction } from "@/redux/features/log-in/log-in.actions";
 
 /**
  * Sign-in page
@@ -29,8 +30,8 @@ export default function SignIn(): JSX.Element {
    */
   function sendForm(event: any): void {
     log({ event });
-
-    //
+    //We call in the API
+    dispatch(logInAction());
     router.push("/user/");
   }
 

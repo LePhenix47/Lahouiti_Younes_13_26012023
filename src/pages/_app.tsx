@@ -3,10 +3,14 @@ import type { AppProps } from "next/app";
 
 //Redux
 //React-Redux
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 
 //Store
 import { store } from "../redux/utils/store/store";
+
+//TanStack Query
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 
 //Components
 import PageLayout from "../components/PageLayout/PageLayout";
@@ -25,12 +29,12 @@ import "../sass/main.scss";
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <>
-      <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <ReduxProvider store={store}>
         <PageLayout>
           <Component {...pageProps} />
         </PageLayout>
-      </Provider>
-    </>
+      </ReduxProvider>
+    </QueryClientProvider>
   );
 }
