@@ -31,7 +31,7 @@ export default function SignIn(): JSX.Element {
   function sendForm(event: any): void {
     log({ event });
     //We call in the API
-    dispatch(logInAction());
+    dispatch(logInAction(true));
     router.push("/user/");
   }
 

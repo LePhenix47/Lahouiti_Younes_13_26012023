@@ -10,7 +10,7 @@ import { store } from "../redux/utils/store/store";
 
 //TanStack Query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-const queryClient = new QueryClient();
+const queryClient: QueryClient = new QueryClient();
 
 //Components
 import PageLayout from "../components/PageLayout/PageLayout";

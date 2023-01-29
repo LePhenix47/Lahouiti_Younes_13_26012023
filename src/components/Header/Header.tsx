@@ -18,7 +18,7 @@ export default function Header(): JSX.Element {
     return state.isLoggedIn;
   });
 
-  log({ userIsLoggedIn });
+  console.log({ userIsLoggedIn });
 
   //We're going to use the router hook to get the path the user is in
   const route: NextRouter = useRouter();
