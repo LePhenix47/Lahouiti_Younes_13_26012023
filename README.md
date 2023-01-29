@@ -42,7 +42,7 @@ P13/
 	 ```
  
  - JS: `camelCase`, ⁣`PascalCase` and `SNAKE_CASE`
-	 1. For variable names: `camelCase`
+	1. For variable names: `camelCase`
 	2. For class names: `PascalCase`
 	3. For contextualized constants names: `SNAKE_CASE`
 	
@@ -50,9 +50,9 @@ P13/
 	```js
 	const data = [{value: 5}, {value: 2}];
 
-	const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
-
 	class Service{...}
+
+	const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
 	```
 This project has a responsive design and a dark/light theme
   
