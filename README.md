@@ -12,7 +12,7 @@
    2.1 [Back-End installation guide](#21-back-end-installation-guide)<br>
    2.2 [Starting the server](#22-starting-the-server)<br>
    2.3 [Routes and endpoints](#23-routes-and-endpoints)<br>
-   2.4 [Other information](#15-other-commands)<br>
+   2.4 [Other information](#24-other-information)<br>
 
 3. [Miscellaneous](#3-miscellaneous) <br>
    3.1 [Folder-app structure](#31-folder-app-structure) <br>
@@ -127,7 +127,7 @@ The API of this server is separated in 2 routes
 | HTTP Verb | Endpoints     | Parameters | Payload of the request                                                                                             | Possible code statuses                                               | Payload of the response                                                                                                                                                                             | Description of the body                                                 |
 | --------- | ------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | POST      | /user/login/  | -          | {<br>   "email": string,<br>   "password": string<br>}                                                             | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {<br>  "token": string<br>}                                                                                                                                                                         | Gives a JSON Web Token when the user fills the<br>form fields correctly |
-| POST      | /user/signup/ | -          | {<br>  "email": string,<br>  "password": string,<br>  "firstName": string,<br>  "lastName": string<br>}            | 200: OK400: Invalid fields500: Internal Server Error                 | {<br> "status":0,<br> "message": string,<br> "body":{<br>   "id":string,<br>   "email": string,<br>  }<br>}                                                                                         | Creates the user in the database and sends back an id and an email      |
+| POST      | /user/signup/ | -          | {<br>  "email": string,<br>  "password": string,<br>  "firstName": string,<br>  "lastName": string<br>}            | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {<br> "status":0,<br> "message": string,<br> "body":{<br>   "id":string,<br>   "email": string,<br>  }<br>}                                                                                         | Creates the user in the database and sends back an id and an email      |
 | POST      | /user/profile | -          | {<br>"header": {<br> "Authorization": string<br>}<br>"body":{}<br>}                                                | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {  "status": number,<br>  "message": string,<br>  "body": {    "email": string,    "firstName": string,    "lastName": string,    "createdAt": Date,    "updatedAt": Date,    "id": string  }<br>}  | Retrieves the profile data of the user                                  |
 | PUT       | /user/profile | -          | {<br>"header": { "Authorization": string}<br>"body":{<br>  "firstName": "Tony",<br><br>  "lastName": "Stark"}<br>} | 200: OK<br><br>400: Invalid fields<br><br>500: Internal Server Error | {  "status": number,  <br> "message": string, <br> "body": {    "email": string,    "firstName": string,    "lastName": string,    "createdAt": Date,    "updatedAt": Date,    "id": string  }<br>} | Modifies the first and/or last name of the user                         |
 
@@ -148,7 +148,7 @@ To view a more detailed installation guide, you can go on the
 
 Here's the current folders structure for the application
 
-```
+```bash
 
 P13/
 
