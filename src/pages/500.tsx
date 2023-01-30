@@ -3,7 +3,7 @@ import React from "react";
 
 /**
  *
- * When your Next.js application encounters a 500 error, it will display this instead of its default error page.
+ * When this Next.js application encounters a 500 error, it will display this instead of its default error page.
  *
  * In development mode when a 500 error occurs, you'll get an error with the call stack to know where the error originated from instead of this page.
  * Therefore, this page will only be displayed in production.
