@@ -4,7 +4,7 @@
  * The createAction() function allows us to avoid creating
  * an Action Creator ourselves
  *
- * example:
+ * Example:
  *
  * const logIn = createAction<boolean>("logIn");
  *
@@ -17,10 +17,14 @@
  */
 import { createAction } from "@reduxjs/toolkit";
 
+/**
+ * Action of the reducer `logInReducer` supposed to set the `isLoggedIn` state to `true`
+ * to allow the user to access the user page
+ */
 export const logIn = createAction<boolean>("logIn");
 
+/**
+ * Action of the reducer `logInReducer` supposed to set the `isLoggedIn` state to `false`
+ * to log out the user and prevent them from entering the user page
+ */
 export const logOut = createAction<boolean>("logOut");
-
-export const logInAction = (): { type: string; payload?: any } => {
-  return { type: "logIn" };
-};

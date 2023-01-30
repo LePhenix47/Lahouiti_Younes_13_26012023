@@ -7,13 +7,17 @@ import CookieService from "@/utils/services/cookies.service";
 import { log } from "@/utils/functions/helper-functions";
 
 //Redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "@/redux/features/log-in/log-in.actions";
 
 /**
  * Header of the page
  */
 export default function Header(): JSX.Element {
-  //We IMPORT the value of the logging state of the user
+  //We EXPORT the value of the logging state when logging out
+  const dispatch = useDispatch();
+
+  //We IMPORT the value of the logging state of the user when logging in
   const userIsLoggedIn = useSelector((state: any) => {
     return state.isLoggedIn;
   });
@@ -41,6 +45,8 @@ export default function Header(): JSX.Element {
    * Function that deletes the `JSON Web Token` (JWT) from the cookies and logs out the user
    */
   function deleteJWT(): void {
+    dispatch(logOut(true));
+
     cookieService.deleteCookieByName("jwt");
   }
 

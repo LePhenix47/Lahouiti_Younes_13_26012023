@@ -151,7 +151,6 @@ Here's the current folders structure for the application
 ```bash
 
 P13/
-
 |
 |
 |– argent-bank/

@@ -12,27 +12,15 @@ import { initialState } from "../../initial-state";
 import { logIn, logOut } from "./log-in.actions";
 
 /**
- * Reducer for the log-in
+ * Reducer for the login:
+ *
+ * Function that creates a new state object with the current state and the payload
  */
-export function logInReducer(state: any = false, action: any): any {
-  const typeOfAction = action.type;
-  switch (typeOfAction) {
-    case "logIn": {
-      return produce((draft: any) => {
-        return (draft.isLoggedIn = !draft.isLoggedIn);
-      }, initialState);
-    }
-
-    default: {
-      return state;
-    }
-  }
-}
-
-/**
- * Reducer for the log-in
- */
-const logReducer = createReducer(false, (builder) => {
-  builder.addCase(logIn, (state, action) => {});
-  builder.addCase(logOut, (state, action) => {});
+export const logInReducer = createReducer(false, (builder) => {
+  builder.addCase(logIn, (state, action) => {
+    return true;
+  });
+  builder.addCase(logOut, (state, action) => {
+    return false;
+  });
 });

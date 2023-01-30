@@ -10,7 +10,7 @@ import { log } from "../../utils/functions/helper-functions";
 
 //Redux
 import { useDispatch } from "react-redux";
-import { logInAction } from "@/redux/features/log-in/log-in.actions";
+import { logIn, logOut } from "@/redux/features/log-in/log-in.actions";
 
 /**
  * Sign-in page
@@ -29,9 +29,14 @@ export default function SignIn(): JSX.Element {
    * Functions that sends the form to the Back-end
    */
   function sendForm(event: any): void {
-    log({ event });
     //We call in the API
-    dispatch(logInAction());
+    log({ event });
+
+    // ...
+
+    dispatch(logIn(true));
+
+    //We redirect the user to the user page
     router.push("/user/");
   }
 
@@ -84,7 +89,12 @@ export default function SignIn(): JSX.Element {
                 <label htmlFor="username" className="sign-in__label">
                   Username
                 </label>
-                <input type="text" id="username" className="sign-in__input" />
+                <input
+                  type="text"
+                  id="username"
+                  className="sign-in__input"
+                  autoComplete="username"
+                />
               </div>
               <div className="sign-in__label-input-container">
                 <label htmlFor="password" className="sign-in__label">

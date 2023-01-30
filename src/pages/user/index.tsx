@@ -1,3 +1,6 @@
+//React
+import { useEffect, useState } from "react";
+
 //Next
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
@@ -9,9 +12,10 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 import { savingsData } from "../../utils/variables/savings-data";
-import { useState } from "react";
 
-//Mocks
+//Redux
+//React-Redux
+import { useSelector } from "react-redux";
 
 //This is the page of the user
 /**
@@ -20,7 +24,15 @@ import { useState } from "react";
  * Route: `/user/`
  *  */
 export default function User(): JSX.Element {
-  //Local state to open/close the
+  //We IMPORT the value of the logging state of the user when logging in
+  const userIsLoggedIn = useSelector((state: any) => {
+    return state.isLoggedIn;
+  });
+
+  //We're going to use the router hook to get the path the user is in
+  const router: NextRouter = useRouter();
+
+  //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
   /**
    * Toggles the settings for the name of the user
@@ -37,6 +49,13 @@ export default function User(): JSX.Element {
 
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    if (!userIsLoggedIn) {
+      log({ router });
+      router.push("/sign-in/");
+    }
+  });
 
   return (
     <>

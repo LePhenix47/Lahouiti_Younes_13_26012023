@@ -5,6 +5,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { logInReducer } from "../../features/log-in/log-in.reducer";
 
 /**
+ * Store:
+ *
  * Immutable object that stores all the different states of the app
  */
 export const store = configureStore({
