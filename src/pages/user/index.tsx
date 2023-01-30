@@ -29,13 +29,17 @@ export default function User(): JSX.Element {
     return state.isLoggedIn;
   });
 
-  //We're going to use the router hook to get the path the user is in
+  //We're going to use the router hook to get the current to redirect the user
+  //if they're not logged in
   const router: NextRouter = useRouter();
+
+  log({ router });
 
   //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   /**
-   * Toggles the settings for the name of the user
+   * Opens or closes the settings for the name of the user
    */
   function toggleNameSettings(): void {
     setIsOpen(!isOpen);
@@ -50,9 +54,11 @@ export default function User(): JSX.Element {
     setIsOpen(!isOpen);
   }
 
+  //We cannot use the push() method of the router to redirect the user to the sign-in page
+  //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
+    //If the user isn't logged in
     if (!userIsLoggedIn) {
-      log({ router });
       router.push("/sign-in/");
     }
   });

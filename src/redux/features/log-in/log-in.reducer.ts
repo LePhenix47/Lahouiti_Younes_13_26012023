@@ -12,9 +12,12 @@ import { initialState } from "../../initial-state";
 import { logIn, logOut } from "./log-in.actions";
 
 /**
- * Reducer for the login:
+ * Reducer for the login
  *
- * Function that creates a new state object with the current state and the payload
+ *
+ * *Reminder:*
+ *
+ * The reducer is a function that creates a new state object with the current state and the payload
  */
 export const logInReducer = createReducer(false, (builder) => {
   builder.addCase(logIn, (state, action) => {
