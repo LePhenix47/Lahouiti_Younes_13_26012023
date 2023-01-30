@@ -10,6 +10,8 @@ import { store } from "../redux/utils/store/store";
 
 //TanStack Query
 /**
+ * We need to use the Hydrate component to enable pre-fetching on the `getServerSideProps` method when using SSR
+ *
  * To view a more detailed reason as to why we need these,
  * check out the doc about how to use TanStack Query in a Next.js app using SSR (Server-side rendering):
  *
@@ -21,21 +23,23 @@ import {
   Hydrate,
 } from "@tanstack/react-query";
 
+//TanStack Query Devtools
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 //Components
 import PageLayout from "../components/PageLayout/PageLayout";
 
 //SASS
 import "../sass/main.scss";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 /**
  * Root component where all the pages will pass through
  *
  * This file should be changed *only if*:
  *
- * -You want to set a page layout
+ * - You want to set a page layout
  *
- * -You want to add a provider for a global state (for React, Redux, TanStackQuery...)
+ * - You want to add a provider for a global state (for React, Redux, TanStackQuery...)
  *
  * This file **must not** be nested inside a React Fragment
  */

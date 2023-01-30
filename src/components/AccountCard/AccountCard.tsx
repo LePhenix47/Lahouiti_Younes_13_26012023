@@ -1,4 +1,4 @@
-import { formatCurrencyValue } from "@/utils/functions/helper-functions";
+import { formatCurrencyValueNumber } from "@/utils/functions/helper-functions";
 import React from "react";
 import Button from "../Button/Button";
 
@@ -14,7 +14,7 @@ export default function AccountCard({
   balance: number;
   cardClass: string;
 }): JSX.Element {
-  const formattedCurrency: string = formatCurrencyValue(balance);
+  const formattedCurrency: string = formatCurrencyValueNumber(balance);
 
   return (
     <div className={cardClass}>

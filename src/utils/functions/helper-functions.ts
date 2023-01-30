@@ -126,10 +126,16 @@ export function toPercent(number: number): string {
 /**
  *Formats a number by separating every thousand with a format from the user's locale
  *example:
- *The user lives in Italy and we have: const number = 1_930 → returns "1.930"
- *If they lived in the US and we have: const number = 1_930 → returns "1,930"
+
+ * - The user lives in Italy and we have:
+ 
+ * `const number = 1_930 → returns "1.930"`
+ *
+ * - If they lived in the US and we have:
+ * 
+ *`const number = 1_930 → returns "1,930"`
  */
-export function formatNumberValue(number: number): string {
+export function formatSignificantDigitsNumber(number: number): string {
   const formatter: Intl.NumberFormat = new Intl.NumberFormat(undefined, {
     maximumSignificantDigits: 3,
   });
@@ -139,25 +145,26 @@ export function formatNumberValue(number: number): string {
 
 /**
  *
- * Function that formats dollars currency values by the user locale
+ * Function that formats currency values by the user's locale
+ *
  *
  * Has 2 parameters:
  *
- * The number to format and the currency (by default in US dollars)
+ * The *number* to format and the *currency* (by default set to US dollars)
  *
  *
  * Example, we want to format 24 dollars:
  *
- * If the user lives in the US → $24.00
+ * - If the user lives in the US → `$24.00`
  *
- * If the user lives in the UK → 24.00$
+ * - If the user lives in the Italy → `24,00 USD`
  */
-export function formatCurrencyValue(
+export function formatCurrencyValueNumber(
   number: number,
-  currencyValue: string = "USD"
+  currencyType: string = "USD"
 ): string {
   const formatter = new Intl.NumberFormat(undefined, {
-    currency: currencyValue,
+    currency: currencyType,
     style: "currency",
     maximumFractionDigits: 2,
   });
