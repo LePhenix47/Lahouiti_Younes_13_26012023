@@ -1,61 +1,6 @@
 
 ## WIP
 
-# 0. Miscellaneous
-
-
-Here's the current folders structure for the application
-
-```
-
-P13/
-
-|
-
-|– argent-bank/
-
-| |– ...
-
-|
-
-|– P10-Bank-API
-
-| |– ...
-
-```
-
-  
-
-**Naming conventions for this project:**
-
-  
-
- - File and folder names: `kebab-case`
-   
-   example: `helper-functions.tsx`
-   
- - CSS: `kebab-case`
- examples: 
-	 ```css
-	 .main-page{...};
-	 --bg-primary: red;
-	 ```
- 
- - JS: `camelCase`, ⁣`PascalCase` and `SNAKE_CASE`
-	1. For variable names: `camelCase`
-	2. For class names: `PascalCase`
-	3. For contextualized constants names: `SNAKE_CASE`
-	
-	examples:
-	```js
-	const data = [{value: 5}, {value: 2}];
-
-	class Service{...}
-
-	const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
-	```
-This project has a responsive design and a dark/light theme
-  
 
 # 1. Front-End
 
@@ -177,3 +122,62 @@ WIP
 
 To view a more detailed installation guide, you can go on the 
 [repository of the Back-End](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) of the project
+
+---
+  
+
+# 3. Miscellaneous
+
+
+Here's the current folders structure for the application
+
+```
+
+P13/
+
+|
+
+|– argent-bank/
+
+| |– ...
+
+|
+
+|– P10-Bank-API
+
+| |– ...
+
+```
+
+  
+
+**Naming conventions for this project:**
+
+  
+
+ - File and folder names: `kebab-case`
+   
+   example: `helper-functions.tsx`
+   
+ - CSS: `kebab-case`
+ examples: 
+	 ```css
+	 .main-page{...};
+	 --bg-primary: red;
+	 ```
+ 
+ - JS: `camelCase`, ⁣`PascalCase` and `SNAKE_CASE`
+	1. For variable names: `camelCase`
+	2. For class names: `PascalCase`
+	3. For contextualized constants names: `SNAKE_CASE`
+	
+	examples:
+	```js
+	const data = [{value: 5}, {value: 2}];
+
+	class Service{...}
+
+	const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
+	```
+This project has a responsive design and a dark/light theme
+  
