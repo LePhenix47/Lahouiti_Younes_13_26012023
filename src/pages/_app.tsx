@@ -9,8 +9,17 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "../redux/utils/store/store";
 
 //TanStack Query
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-const queryClient = new QueryClient();
+/**
+ * To view a more detailed reason as to why we need these,
+ * check out the doc about how to use TanStack Query in a Next.js app using SSR (Server-side rendering):
+ *
+ * https://tanstack.com/query/latest/docs/react/guides/ssr
+ */
+import {
+  QueryClient,
+  QueryClientProvider,
+  Hydrate,
+} from "@tanstack/react-query";
 
 //Components
 import PageLayout from "../components/PageLayout/PageLayout";
@@ -31,14 +40,21 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
  * This file **must not** be nested inside a React Fragment
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  /**
+   * This `queryClient` constant ensures that data is not shared between different users and requests, while still only creating the QueryClient once per component lifecycle.
+   */
+  const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
-      <ReduxProvider store={store}>
-        <PageLayout>
-          <Component {...pageProps} />
-        </PageLayout>
-      </ReduxProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <Hydrate state={pageProps.dehydratedState}>
+        <ReduxProvider store={store}>
+          <PageLayout>
+            <Component {...pageProps} />
+          </PageLayout>
+        </ReduxProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </Hydrate>
     </QueryClientProvider>
   );
 }

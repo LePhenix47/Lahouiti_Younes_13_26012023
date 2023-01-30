@@ -1,7 +1,9 @@
 //TanStack Query
+//To make GET requests:
 import { useQuery } from "@tanstack/react-query";
-
+//To make POST requests:
 import { useMutation } from "@tanstack/react-query";
+
 /**
  * Service to call the API through methods
  */
@@ -19,7 +21,7 @@ export default class AppService {
   //Need to use TanStack Query
 
   /**
-   * Function expression that makes a `GET`request using `fetch`
+   * Function expression that makes a `GET` request using `fetch`
    */
   private getData = async function name(url: string) {
     try {
@@ -33,9 +35,12 @@ export default class AppService {
       }
       const data: any = await response.json();
 
+      //We return the data
       return data;
     } catch (APIError) {
       console.error(`⚠ An unexpected API error has occured: ${APIError} ⚠`);
+      //We return the error message
+      return APIError;
     }
   };
 
@@ -45,7 +50,7 @@ export default class AppService {
   private postData = async function (
     url: string,
     dataToSend: any,
-    jwt?: string
+    jsonWebToken?: string
   ) {
     //We need to send text to the API so we stringify it
     const stringifiedData: string = JSON.stringify(dataToSend);
@@ -54,7 +59,7 @@ export default class AppService {
       method: "POST", //To post and modify data at the same time
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${jsonWebToken}`,
       },
       body: stringifiedData,
     });
@@ -78,21 +83,49 @@ export default class AppService {
    * {email: string, password: string}
    * ```
    */
-  async postLogin(email: string, password: string) {
+  async postLogin(email: string, password: string, jwt: string) {
     const url = `${this.urlAPI}/login/`;
+
+    const bodyOfRequest = { email, password };
+
+    const response: any = useMutation({
+      mutationFn: () => {
+        return this.postData(url, bodyOfRequest, jwt);
+      },
+    });
+
+    return response;
   }
 
   /**
-   * Posts the new user first
+   * Retrieves the data of the user
    */
-  async postProfile() {
+  async postProfile(jwt: string) {
     const url = `${this.urlAPI}/profile/`;
+
+    const response: any = useMutation({
+      mutationFn: () => {
+        return this.postData(url, jwt);
+      },
+    });
+
+    return response;
   }
 
   /**
    *
    */
-  async putProfile() {
+  async putProfile(jwt: string, newFirstName: string, newLastName: string) {
     const url = `${this.urlAPI}/profile/`;
+
+    const bodyOfRequest = { firstName: newFirstName, lastName: newLastName };
+
+    const response: any = useMutation({
+      mutationFn: () => {
+        return this.postData(url, bodyOfRequest, jwt);
+      },
+    });
+
+    return response;
   }
 }
