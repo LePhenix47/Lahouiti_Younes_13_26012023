@@ -1,5 +1,21 @@
 
-## WIP
+# Table of contents
+1. [Front-End](#1-front-end) <br>
+	1.1 [Front-End stack](#11-front-end-stack)<br>
+	1.2 [Libraries used](#12-libraries-used)<br>
+	1.3 [Installation guide](#13-installation-guide)<br>
+	1.4 [Launching the project](#14-launching-the-project)<br>
+	1.5 [Other commands](#15-other-commands)<br>
+
+2. [Back-End](#2-back-end) <br>
+   2.1 [Back-End installation guide](#21-back-end-installation-guide)<br>
+   2.2 [Starting the server](#22-starting-the-server)<br>
+   2.3 [Routes and endpoints](#23-routes-and-endpoints)<br>
+   2.4 [Other information](#15-other-commands)<br>
+
+3. [Miscellaneous](#3-miscellaneous) <br>
+   3.1 [Folder-app structure](#31-folder-app-structure) <br>
+   3.2 [Naming conventions](#32-naming-conventions) <br>
 
 
 # 1. Front-End
@@ -43,7 +59,7 @@ Once Node.js has been successfully added to your IDE, you'll need to:
 
 Afterwards you'll need to install all the project dependencies with `npm install`
 
-## 1.4 Launch the project
+## 1.4 Launching the project
 For the Front-end, you will need to compile the Next.js app with the command:
 ```bash
 npm run dev
@@ -93,7 +109,7 @@ Once installed, you'll need to populate the database with:
 npm run populate-db
 ```
 
-## 2.2 Start the server
+## 2.2 Starting the server
 
 In order to launch the Back-end server, you'll need to run nodemon with this command:
 
@@ -128,7 +144,7 @@ To view a more detailed installation guide, you can go on the
 
 # 3. Miscellaneous
 
-
+## 3.1 Folder app structure
 Here's the current folders structure for the application
 
 ```
@@ -151,13 +167,14 @@ P13/
 
   
 
-**Naming conventions for this project:**
+## 3.2 Naming conventions
 
   
 
  - File and folder names: `kebab-case`
    
    example: `helper-functions.tsx`
+
    
  - CSS: `kebab-case`
  examples: 
