@@ -136,16 +136,16 @@ Here's the current folders structure for the application
 P13/
 
 |
-
-|– argent-bank/
-
-| |– ...
-
 |
-
+|– argent-bank/
+|  |
+|  |– ...
+|
+|
+|
 |– P10-Bank-API
-
-| |– ...
+|  |
+|  |– ...
 
 ```
 
@@ -173,7 +173,7 @@ P13/
 	
 	examples:
 	```js
-	const data = [{value: 5}, {value: 2}];
+	const dataValues = [{value: 5}, {value: 2}];
 
 	class Service{...}
 
