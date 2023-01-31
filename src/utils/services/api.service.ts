@@ -7,23 +7,23 @@ import { useMutation } from "@tanstack/react-query";
 /**
  * Service to call the API through methods
  */
-export default class AppService {
+export default class ApiService {
   //Local variables
-  urlAPI: string;
+  BASE_URL: string;
 
   constructor() {
     //Back-end API to fetch data
-    this.urlAPI = "http://localhost:3001/user";
+    this.BASE_URL = "http://localhost:3001/api/v1/user";
 
     //Local Next.js API to fetch data
-    // this.urlAPI = "http://localhost:3000/api/";
+    // this.BASE_URL = "http://localhost:3000/api/";
   }
   //Need to use TanStack Query
 
   /**
    * Function expression that makes a `GET` request using `fetch`
    */
-  private getData = async function name(url: string) {
+  async getData(url: string) {
     try {
       const response: any = await fetch(url);
       //In case there's an error with the query that the API can't send
@@ -42,21 +42,17 @@ export default class AppService {
       //We return the error message
       return APIError;
     }
-  };
+  }
 
   /**
    * Function expression that makes a `POST` request using `fetch`
    */
-  private postData = async function (
-    url: string,
-    dataToSend: any,
-    jsonWebToken?: string
-  ) {
+  async postData(url: string, dataToSend: any, jsonWebToken?: string) {
     //We need to send text to the API so we stringify it
     const stringifiedData: string = JSON.stringify(dataToSend);
 
     const response: any = await fetch(url, {
-      method: "POST", //To post and modify data at the same time
+      method: "POST", //To post or modify data
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jsonWebToken}`,
@@ -68,13 +64,13 @@ export default class AppService {
     const parsedResponse: any = await response.json();
 
     return parsedResponse;
-  };
+  }
 
   /**
    * Posts the user email, fullname and email to create the user
    */
   async postSignUp() {
-    const url = `${this.urlAPI}/signup/`;
+    const url: string = `${this.BASE_URL}/signup/`;
   }
 
   /**
@@ -83,48 +79,45 @@ export default class AppService {
    * {email: string, password: string}
    * ```
    */
-  async postLogin(email: string, password: string, jwt: string) {
-    const url = `${this.urlAPI}/login/`;
+  async postLogin(email: string, password: string): Promise<any> {
+    const url: string = `${this.BASE_URL}/login/`;
 
-    const bodyOfRequest = { email, password };
+    const bodyOfRequest: {
+      email: string;
+      password: string;
+    } = { email, password };
 
-    const response: any = useMutation({
-      mutationFn: () => {
-        return this.postData(url, bodyOfRequest, jwt);
-      },
-    });
+    const response: any = await this.postData(url, bodyOfRequest);
 
     return response;
   }
-
   /**
    * Retrieves the data of the user
    */
-  async postProfile(jwt: string) {
-    const url = `${this.urlAPI}/profile/`;
+  async postProfile(jwt: string): Promise<any> {
+    const url: string = `${this.BASE_URL}/profile/`;
 
-    const response: any = useMutation({
-      mutationFn: () => {
-        return this.postData(url, jwt);
-      },
-    });
+    const response: any = await this.postData(url, jwt);
 
     return response;
   }
 
   /**
-   *
+   * Changes the first and/or last name of the user
    */
-  async putProfile(jwt: string, newFirstName: string, newLastName: string) {
-    const url = `${this.urlAPI}/profile/`;
+  async putProfile(
+    jwt: string,
+    newFirstName: string,
+    newLastName: string
+  ): Promise<any> {
+    const url: string = `${this.BASE_URL}/profile/`;
 
-    const bodyOfRequest = { firstName: newFirstName, lastName: newLastName };
+    const bodyOfRequest: {
+      firstName: string;
+      lastName: string;
+    } = { firstName: newFirstName, lastName: newLastName };
 
-    const response: any = useMutation({
-      mutationFn: () => {
-        return this.postData(url, bodyOfRequest, jwt);
-      },
-    });
+    const response: any = await this.postData(url, bodyOfRequest, jwt);
 
     return response;
   }

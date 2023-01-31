@@ -20,6 +20,9 @@ $scrollbar-thumb-color: $color-secondary;
 $scrollbar-thumb-color--hover: lighten($color-secondary, 10%);
 $scrollbar-thumb-color--active: darken($color-secondary, 10%);
 
+$error-color: red;
+$success-color: darkgreen;
+
 //
 $image-inversion: 0%;
 //CSS variables
@@ -47,6 +50,6 @@ $image-inversion: 0%;
     --scrollbar-thumb-color--hover:#{$scrollbar-thumb-color--hover};
     --scrollbar-thumb-color--active:#{$scrollbar-thumb-color--active};
 
-    //Pixel and percentages
-    --image-inversion: $image-inversion;
+    --error-color:#{$error-color};
+    --success-color:#{$success-color};
 }
