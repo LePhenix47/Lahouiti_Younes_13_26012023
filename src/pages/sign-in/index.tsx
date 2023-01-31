@@ -11,6 +11,7 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 import ApiService from "../../utils/services/api.service";
+import CookieService from "@/utils/services/cookies.service";
 
 //Redux
 import { useDispatch } from "react-redux";
@@ -30,7 +31,6 @@ import SpinLoader from "@/components/SpinLoader/SpinLoader";
  * Route: `/sign-in/`
  */
 export default function SignIn(): JSX.Element {
-  let [serverResponse, setServerResponse] = useState<any | null>(null);
   //We get the router
   const router: NextRouter = useRouter();
 
@@ -61,8 +61,6 @@ export default function SignIn(): JSX.Element {
       log("Received a response!", {
         data,
       });
-
-      setServerResponse(data);
     },
   });
 
@@ -82,7 +80,6 @@ export default function SignIn(): JSX.Element {
 
     if (!fieldsAreCorrectlyFilled) {
       const error = { status: 400, message: "Please fill in the form fields" };
-      setServerResponse(error);
       return;
     }
 
@@ -91,12 +88,20 @@ export default function SignIn(): JSX.Element {
     //@ts-ignore
     logInFormMutation.mutate({ email, password });
 
+    const cookieCreator: CookieService = new CookieService();
+
+    const successfulRequest: boolean = logInFormMutation.data.status < 400;
+
+    if (successfulRequest) {
+      cookieCreator.setCookie("jwt", logInFormMutation.data.body.token);
+    }
+
     // ...
 
     // dispatch(logIn(true));
 
     //We redirect the user to the user page
-    // router.push("/user/");
+    // router.push("/profile/");
   }
 
   return (
@@ -194,7 +199,7 @@ export default function SignIn(): JSX.Element {
 
         {!logInFormMutation.isLoading && logInFormMutation.data && (
           <div className="sign-in__server-response">
-            {logInFormMutation.status === "error" ? (
+            {logInFormMutation.data.status >= 400 ? (
               <ApiError
                 status={logInFormMutation.data.status}
                 message={logInFormMutation.data.message}

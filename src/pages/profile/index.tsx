@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
  *
  * Route: `/user/`
  *  */
-export default function User(): JSX.Element {
+export default function Profile(): JSX.Element {
   //We IMPORT the value of the logging state of the user when logging in
   const userIsLoggedIn = useSelector((state: any) => {
     return state.isLoggedIn;
