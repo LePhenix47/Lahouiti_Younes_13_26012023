@@ -12,7 +12,7 @@
  * → { type: "logIn" }
  *
  * setIsLogged(true)
- * → { type: "logIn", payload:true }
+ * → { type: "logIn", payload: true }
  *
  */
 import { createAction } from "@reduxjs/toolkit";

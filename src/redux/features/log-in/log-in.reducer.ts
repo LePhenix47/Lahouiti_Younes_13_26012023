@@ -18,6 +18,8 @@ import { logIn, logOut } from "./log-in.actions";
  * *Reminder:*
  *
  * The reducer is a function that creates a new state object with the current state and the payload
+ *
+ * Used to handle the app state changes
  */
 export const logInReducer = createReducer(false, (builder) => {
   builder.addCase(logIn, (state, action) => {

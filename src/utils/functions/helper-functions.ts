@@ -157,7 +157,7 @@ export function formatSignificantDigitsNumber(number: number): string {
  *
  * - If the user lives in the US → `$24.00`
  *
- * - If the user lives in the Italy → `24,00 USD`
+ * - If the user lives in Italy → `24,00 USD`
  */
 export function formatCurrencyValueNumber(
   number: number,

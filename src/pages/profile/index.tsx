@@ -17,7 +17,6 @@ import CookieService from "@/utils/services/cookies.service";
 //Redux
 //React-Redux
 import { useSelector } from "react-redux";
-import { cookieType } from "@/utils/types/cookie-service-types";
 import ApiService from "@/utils/services/api.service";
 import { useMutation } from "@tanstack/react-query";
 
@@ -62,27 +61,38 @@ export default function Profile(): JSX.Element {
   //We cannot use the push() method of the router to redirect the user to the sign-in page
   //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
-    //If the user isn't logged in
+    //If the user isn't logged in we redirect them to the sign-in page
+    //ERROR TO FIX
     const userIsNotLoggedIn: boolean = !userIsLoggedIn;
     if (userIsNotLoggedIn) {
       router.push("/sign-in/");
     }
 
+    //We recover the jwt inside the browser"s cookies
     const cookieCreator: CookieService = new CookieService();
 
     let jsonWebToken: string | undefined =
       cookieCreator.getCookieByName("jwt")?.value;
 
+    log(jsonWebToken);
+
+    //We make the POST request
     const apiService: ApiService = new ApiService();
 
-    const userProfileMutation = useMutation({
-      mutationFn: (jwt: string) => {
-        return apiService.postProfile(jwt);
-      },
-      onMutate: () => {},
-      onSuccess: () => {},
-      onError: () => {},
-    });
+    /**
+     * CANT USE HOOKS INSIDE OTHER HOOKS!
+     */
+    // const userProfileMutation = useMutation({
+    //   mutationFn: (jwt: string) => {
+    //     return apiService.postProfile(jwt);
+    //   },
+    //   onMutate: () => {},
+    //   onSuccess: (data, variables) => {},
+    //   onError: () => {},
+    // });
+
+    // //@ts-ignore
+    // userProfileMutation.mutate(jsonWebToken);
   });
 
   return (
