@@ -12,10 +12,14 @@ import Button from "../../components/Button/Button";
 //Utils
 import { log } from "../../utils/functions/helper-functions";
 import { savingsData } from "../../utils/variables/savings-data";
+import CookieService from "@/utils/services/cookies.service";
 
 //Redux
 //React-Redux
 import { useSelector } from "react-redux";
+import { cookieType } from "@/utils/types/cookie-service-types";
+import ApiService from "@/utils/services/api.service";
+import { useMutation } from "@tanstack/react-query";
 
 //This is the page of the user
 /**
@@ -24,8 +28,9 @@ import { useSelector } from "react-redux";
  * Route: `/user/`
  *  */
 export default function Profile(): JSX.Element {
+  // log({ jsonWebToken });
   //We IMPORT the value of the logging state of the user when logging in
-  const userIsLoggedIn = useSelector((state: any) => {
+  const userIsLoggedIn: boolean = useSelector((state: any) => {
     return state.isLoggedIn;
   });
 
@@ -58,9 +63,26 @@ export default function Profile(): JSX.Element {
   //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
     //If the user isn't logged in
-    if (!userIsLoggedIn) {
+    const userIsNotLoggedIn: boolean = !userIsLoggedIn;
+    if (userIsNotLoggedIn) {
       router.push("/sign-in/");
     }
+
+    const cookieCreator: CookieService = new CookieService();
+
+    let jsonWebToken: string | undefined =
+      cookieCreator.getCookieByName("jwt")?.value;
+
+    const apiService: ApiService = new ApiService();
+
+    const userProfileMutation = useMutation({
+      mutationFn: (jwt: string) => {
+        return apiService.postProfile(jwt);
+      },
+      onMutate: () => {},
+      onSuccess: () => {},
+      onError: () => {},
+    });
   });
 
   return (
@@ -155,3 +177,12 @@ export default function Profile(): JSX.Element {
     </>
   );
 }
+
+/**
+ * Next.js function that returns data to the component when using Server Side Rendering
+ */
+// // export async function getServerSideProps() {
+// //   return {
+// //     props: {},
+// //   };
+// }

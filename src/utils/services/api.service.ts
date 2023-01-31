@@ -1,15 +1,11 @@
-//TanStack Query
-//To make GET requests:
-import { useQuery } from "@tanstack/react-query";
-//To make POST requests:
-import { useMutation } from "@tanstack/react-query";
+import { log } from "../functions/helper-functions";
 
 /**
  * Service to call the API through methods
  */
 export default class ApiService {
   //Local variables
-  BASE_URL: string;
+  private BASE_URL: string;
 
   constructor() {
     //Back-end API to fetch data
@@ -23,7 +19,7 @@ export default class ApiService {
   /**
    * Function expression that makes a `GET` request using `fetch`
    */
-  async getData(url: string) {
+  private async getData(url: string) {
     try {
       const response: any = await fetch(url);
       //In case there's an error with the query that the API can't send
@@ -47,7 +43,7 @@ export default class ApiService {
   /**
    * Function expression that makes a `POST` request using `fetch`
    */
-  async postData(url: string, dataToSend: any, jsonWebToken?: string) {
+  private async postData(url: string, dataToSend: any, jsonWebToken?: string) {
     //We need to send text to the API so we stringify it
     const stringifiedData: string = JSON.stringify(dataToSend);
 
@@ -63,7 +59,15 @@ export default class ApiService {
     //We want to returned parsed data as a promise
     const parsedResponse: any = await response.json();
 
-    return parsedResponse;
+    const statusIsOK: boolean = parsedResponse.status === 200;
+
+    //We return the response as a success
+    if (statusIsOK) {
+      return parsedResponse;
+    }
+
+    //We return the response as a failure
+    throw parsedResponse;
   }
 
   /**
@@ -86,8 +90,6 @@ export default class ApiService {
       email: string;
       password: string;
     } = { email, password };
-
-    console.log({ url, bodyOfRequest });
 
     const response: any = await this.postData(url, bodyOfRequest);
 

@@ -2,8 +2,9 @@
  * Utility class service that creates and removes timeouts
  */
 export class Timeout {
-  id: number;
-  arrayOfIds: number[];
+  private id: number;
+  private arrayOfIds: number[];
+
   constructor() {
     this.id = 0;
     this.arrayOfIds = [];

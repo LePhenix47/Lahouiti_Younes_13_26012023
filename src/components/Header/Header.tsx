@@ -30,13 +30,13 @@ export default function Header(): JSX.Element {
   //We create contextualized constants to make the code more inteligible
   const HOME_PAGE: string = "/";
   const LOGIN_PAGE: string = "/sign-in";
-  const USER_PAGE: string = "/user";
+  const PROFILE_PAGE: string = "/profile";
 
   //We create constants to contextualize structural conditions
   const isHomeOrLoginPage: boolean =
-    route.asPath === HOME_PAGE || route.asPath.includes(LOGIN_PAGE);
+    route.asPath === HOME_PAGE || route.asPath === LOGIN_PAGE;
 
-  const isUserPage: boolean = route.asPath.includes(USER_PAGE);
+  const isUserPage: boolean = route.asPath === PROFILE_PAGE;
 
   //We manage the jwt with our cookie service
   const cookieService: CookieService = new CookieService();
@@ -44,7 +44,7 @@ export default function Header(): JSX.Element {
   /**
    * Function that deletes the `JSON Web Token` (JWT) from the cookies and logs out the user
    */
-  function deleteJWT(): void {
+  function logUserOut(): void {
     dispatch(logOut(true));
 
     cookieService.deleteCookieByName("jwt");
@@ -71,7 +71,7 @@ export default function Header(): JSX.Element {
             </Link>
           </li>
           <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
-            <Link href="/users">
+            <Link href="/profile">
               <i className="fa fa-user-circle header__sign-in-logo"></i> User
             </Link>
           </li>
@@ -79,7 +79,7 @@ export default function Header(): JSX.Element {
             <Link
               href="/"
               onClick={() => {
-                deleteJWT();
+                logUserOut();
               }}
             >
               <i className="fa fa-sign-out"></i> Log-out

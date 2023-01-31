@@ -41,6 +41,8 @@ export default class CookieService {
 
   /**
    * Recovers a cookie by its name
+   *
+   * ⚠ **WARNING**: It's case sensitive ⚠
    */
   getCookieByName(cookieNameToFind: string): cookieType | null {
     //We get all the cookies

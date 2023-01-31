@@ -15,7 +15,7 @@ import CookieService from "@/utils/services/cookies.service";
 
 //Redux
 import { useDispatch } from "react-redux";
-import { MutableRefObject, useRef, useState } from "react";
+import { MutableRefObject, useRef } from "react";
 
 //TanStack Query
 import { useMutation } from "@tanstack/react-query";
@@ -24,6 +24,7 @@ import { useMutation } from "@tanstack/react-query";
 import ApiError from "@/components/ApiError/ApiError";
 import ApiSuccess from "@/components/ApiSuccess/ApiSuccess";
 import SpinLoader from "@/components/SpinLoader/SpinLoader";
+import { Timeout } from "@/utils/services/timeout.service";
 
 /**
  * Sign-in page
@@ -40,7 +41,7 @@ export default function SignIn(): JSX.Element {
   //API service to call the API
   const apiService = new ApiService();
 
-  //Should use the useRef() hook here to get the values of the inputs
+  //Should use the useRef() hook here to get the values of the inputs by their reference
   const emailInputRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
 
   const passwordInputRef: MutableRefObject<HTMLInputElement | null> =
@@ -49,18 +50,45 @@ export default function SignIn(): JSX.Element {
   const rememberCheckboxRef: MutableRefObject<HTMLInputElement | null> =
     useRef(null);
 
+  /**
+   * Makes the POST request to send the values of the form fields to the Back-End
+   */
   const logInFormMutation = useMutation({
-    //@ts-ignore
     mutationFn: ({ email, password }: { email: string; password: string }) => {
       return apiService.postLogin(email, password);
     },
+    //Will execute before mutating
     onMutate: () => {
       log("Sending data to the Back-End");
     },
-    onSettled: (data: any, error: any, variables: any, context: any) => {
-      log("Received a response!", {
+    //Will execute if the fetch request worked
+    onSuccess: (data: any, variables: any, context: any) => {
+      log("SUCCESS!", {
         data,
+        variables,
+        context,
       });
+
+      const cookieCreator: CookieService = new CookieService();
+
+      const timeoutCreator: Timeout = new Timeout();
+
+      const statusIsOk: boolean = data.status === 200;
+      if (statusIsOk) {
+        let sendUserToProfilePageFonction = () => {
+          cookieCreator.setCookie("jwt", data.body.token);
+          dispatch(logIn(true));
+          router.push("/profile/");
+        };
+
+        let sendUserToProfilePage = timeoutCreator.addTimeout(
+          sendUserToProfilePageFonction,
+          1_500
+        );
+      }
+    },
+    onError: (error: unknown, variables: any, context: any) => {
+      log("FAIL", error);
     },
   });
 
@@ -76,32 +104,10 @@ export default function SignIn(): JSX.Element {
     const checkedCheckbox: boolean | undefined =
       rememberCheckboxRef?.current?.checked;
 
-    const fieldsAreCorrectlyFilled: boolean = !!email && !!password;
-
-    if (!fieldsAreCorrectlyFilled) {
-      const error = { status: 400, message: "Please fill in the form fields" };
-      return;
-    }
-
-    log({ event }, { email, password, checkedCheckbox });
-
     //@ts-ignore
     logInFormMutation.mutate({ email, password });
 
-    const cookieCreator: CookieService = new CookieService();
-
-    const successfulRequest: boolean = logInFormMutation.data.status < 400;
-
-    if (successfulRequest) {
-      cookieCreator.setCookie("jwt", logInFormMutation.data.body.token);
-    }
-
-    // ...
-
-    // dispatch(logIn(true));
-
-    //We redirect the user to the user page
-    // router.push("/profile/");
+    log({ event }, { email, password, checkedCheckbox });
   }
 
   return (
@@ -197,22 +203,21 @@ export default function SignIn(): JSX.Element {
 
         {logInFormMutation.isLoading && <SpinLoader width={100} />}
 
-        {!logInFormMutation.isLoading && logInFormMutation.data && (
-          <div className="sign-in__server-response">
-            {logInFormMutation.data.status >= 400 ? (
-              <ApiError
-                status={logInFormMutation.data.status}
-                message={logInFormMutation.data.message}
-              />
-            ) : (
-              <ApiSuccess
-                status={logInFormMutation.data.status}
-                message={logInFormMutation.data.message}
-                data={logInFormMutation.data.body.token}
-              />
-            )}
-          </div>
-        )}
+        <div className="sign-in__server-response">
+          {logInFormMutation.isSuccess && (
+            <ApiSuccess
+              message="You'll be redirected in a few seconds"
+              data={null}
+            />
+          )}
+
+          {logInFormMutation.isError && (
+            <ApiError
+              //@ts-ignore
+              message={logInFormMutation?.error?.message}
+            />
+          )}
+        </div>
       </section>
     </>
   );
