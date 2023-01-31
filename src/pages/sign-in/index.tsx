@@ -22,6 +22,7 @@ import { useMutation } from "@tanstack/react-query";
 //Components
 import ApiError from "@/components/ApiError/ApiError";
 import ApiSuccess from "@/components/ApiSuccess/ApiSuccess";
+import SpinLoader from "@/components/SpinLoader/SpinLoader";
 
 /**
  * Sign-in page
@@ -50,14 +51,17 @@ export default function SignIn(): JSX.Element {
 
   const logInFormMutation = useMutation({
     //@ts-ignore
-    mutationFn: (email: string, password: string) => {
+    mutationFn: ({ email, password }: { email: string; password: string }) => {
       return apiService.postLogin(email, password);
     },
     onMutate: () => {
       log("Sending data to the Back-End");
     },
     onSettled: (data: any, error: any, variables: any, context: any) => {
-      log("Received a response!", data);
+      log("Received a response!", {
+        data,
+      });
+
       setServerResponse(data);
     },
   });
@@ -186,18 +190,20 @@ export default function SignIn(): JSX.Element {
           </div>
         </form>
 
-        {serverResponse && (
+        {logInFormMutation.isLoading && <SpinLoader width={100} />}
+
+        {!logInFormMutation.isLoading && logInFormMutation.data && (
           <div className="sign-in__server-response">
-            {serverResponse?.status >= 400 ? (
+            {logInFormMutation.status === "error" ? (
               <ApiError
-                status={serverResponse.status}
-                message={serverResponse.message}
+                status={logInFormMutation.data.status}
+                message={logInFormMutation.data.message}
               />
             ) : (
               <ApiSuccess
-                status={serverResponse.status}
-                message={serverResponse.message}
-                data={null}
+                status={logInFormMutation.data.status}
+                message={logInFormMutation.data.message}
+                data={logInFormMutation.data.body.token}
               />
             )}
           </div>

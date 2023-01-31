@@ -87,6 +87,8 @@ export default class ApiService {
       password: string;
     } = { email, password };
 
+    console.log({ url, bodyOfRequest });
+
     const response: any = await this.postData(url, bodyOfRequest);
 
     return response;
