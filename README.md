@@ -182,7 +182,7 @@ P13/
 - JS: `camelCase`, ⁣`PascalCase` and `SNAKE_CASE`
 
  1. For variable names: `camelCase`
- 2. For class names: `PascalCase`
+ 2. For class and component names: `PascalCase`
  3. For contextualized constants names: `SNAKE_CASE`
 
  examples:
@@ -191,6 +191,8 @@ P13/
  const dataValues = [{value: 5}, {value: 2}];
 
  class Service{...}
+
+ function Header(){...}
 
  const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
  ```
