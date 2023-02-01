@@ -87,6 +87,8 @@ npm  run  test -- [file-name].tsx --silent=false --coverage=false
 ```
 
 ---
+<br>
+
   
 # 2. Back-End
 
@@ -142,6 +144,7 @@ To view a more detailed installation guide, you can go on the
 [repository of the Back-End](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) of the project
 
 ---
+<br>
   
 # 3. Miscellaneous
 
