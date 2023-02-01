@@ -38,25 +38,6 @@ export default function Profile(): JSX.Element {
   //if they're not logged in
   const router: NextRouter = useRouter();
 
-  //Local state to open/close the settings to change the name
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  /**
-   * Opens or closes the settings for the name of the user
-   */
-  function toggleNameSettings(): void {
-    setIsOpen(!isOpen);
-  }
-
-  /**
-   * Function that saves the changes made to the user
-   */
-  function saveNameSettings(): void {
-    //Make an API request here
-
-    setIsOpen(!isOpen);
-  }
-
   let jsonWebToken: string | undefined = undefined;
 
   //We make the POST request
@@ -145,39 +126,7 @@ export default function Profile(): JSX.Element {
       <section className="user">
         <div className="user__container">
           <div className="user__name-settings">
-            {/* <div
-              className={`user__name-inputs-buttons ${
-                isOpen ? "show" : "hide"
-              }`}
-            >
-              <input
-                type="text"
-                className={`user__input ${isOpen ? "show" : "hide"}`}
-              />
-              <input
-                type="text"
-                className={`user__input ${isOpen ? "show" : "hide"}`}
-              />
-              <Button
-                buttonText="Save"
-                buttonType="button"
-                className={`user__save-button ${isOpen ? "show" : "hide"}`}
-                callbackFunction={saveNameSettings}
-              />
-              <Button
-                buttonText="Cancel"
-                buttonType="button"
-                className={`user__cancel-button ${isOpen ? "show" : "hide"}`}
-                callbackFunction={toggleNameSettings}
-              />
-            </div>
-            <Button
-              buttonText="Edit name"
-              buttonType="button"
-              className={`user__button ${isOpen ? "hide" : "show"}`}
-              callbackFunction={toggleNameSettings}
-            /> */}
-            <ChangeName />
+            <ChangeName mutator={patchNamesMutation} />
           </div>
 
           <div className="user__accounts">

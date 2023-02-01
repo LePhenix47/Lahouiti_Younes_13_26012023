@@ -8,14 +8,9 @@ export default function ApiSuccess({
   data: any | null;
 }): JSX.Element {
   return (
-    <div className="sign-in__server-success">
-      <h2 className="sign-in__server-success-status">Success!</h2>
-      <p className="sign-in__server-success-message">
-        {message}
-        {/* <br />
-        <br />
-        {data} */}
-      </p>
+    <div className="server-success">
+      <h2 className="server-success__status">Success!</h2>
+      <p className="server-success__message">{message}</p>
     </div>
   );
 }

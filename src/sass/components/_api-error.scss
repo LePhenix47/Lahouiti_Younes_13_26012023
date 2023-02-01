@@ -1,17 +1,17 @@
 @use "../utils/" as *;
 
-&__server-error {
+.server-error {
     border-radius: 10px;
 
     background-color: var(--error-color);
 
-    &-status {
+    &__status {
         text-align: center;
         text-decoration: underline;
         padding: 15px;
     }
 
-    &-message {
+    &__message {
         font-family: Consolas, 'monospace';
         font-size: 16px;
         padding: 15px;

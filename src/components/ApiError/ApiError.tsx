@@ -6,11 +6,9 @@ export default function ApiError({
   message: string;
 }): JSX.Element {
   return (
-    <div className="sign-in__server-error">
-      <h2 className="sign-in__server-error-status">
-        Oops! There was an error:
-      </h2>
-      <p className="sign-in__server-error-message">{message}</p>
+    <div className="server-error">
+      <h2 className="server-error__status">Oops! There was an error:</h2>
+      <p className="server-error__message">{message}</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@/components/Button/Button";
 
-export default function ChangeName() {
+export default function ChangeName({ mutator }: { mutator: any }): JSX.Element {
   //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

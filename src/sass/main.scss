@@ -7,6 +7,9 @@
 
 //Components
 @forward "./components/advantage-card";
+@forward "./components/api-error";
+@forward "./components/api-success";
+@forward "./components/change-name";
 @forward "./components/button";
 @forward "./components/scrollbar";
 @forward "./components/spin-loader";
