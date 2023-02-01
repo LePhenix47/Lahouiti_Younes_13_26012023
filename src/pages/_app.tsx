@@ -56,8 +56,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           <PageLayout>
             <Component {...pageProps} />
           </PageLayout>
+          <ReactQueryDevtools />
         </ReduxProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
     </QueryClientProvider>
   );

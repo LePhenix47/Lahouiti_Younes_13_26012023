@@ -47,6 +47,7 @@ export default class ApiService {
     //We need to send text to the API so we stringify it
     const requestHasBody: boolean = !!dataToSend;
 
+    console.log({ url, dataToSend, jsonWebToken });
     let stringifiedData: string;
     if (requestHasBody) {
       stringifiedData = JSON.stringify(dataToSend);
@@ -108,7 +109,9 @@ export default class ApiService {
   async postProfile(jwt: string): Promise<any> {
     const url: string = `${this.BASE_URL}/profile/`;
 
-    const response: any = await this.postData(url, jwt);
+    const emptyBodyRequest: object = {};
+
+    const response: any = await this.postData(url, emptyBodyRequest, jwt);
 
     return response;
   }

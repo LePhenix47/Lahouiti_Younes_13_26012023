@@ -19,6 +19,7 @@ import ApiService from "@/utils/services/api.service";
 //React-Redux
 import { useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
+import ChangeName from "@/components/ChangeName/ChangeName";
 
 //This is the page of the user
 /**
@@ -66,11 +67,25 @@ export default function Profile(): JSX.Element {
       return apiService.postProfile(jwt);
     },
     onMutate: () => {},
-    onSuccess: (data, variables) => {
-      log("SUCCESS, USER INFOS:", data);
+    onSuccess: (data: any, variables: any) => {
+      log("SUCCESS, USER INFOS:", data, variables);
     },
-    onError: () => {
-      log("FAILED TO RETRIEVE USER INFOS");
+    onError: (error: any, variables: any) => {
+      log("FAILED TO RETRIEVE USER INFOS", error, variables);
+    },
+  });
+
+  const patchNamesMutation = useMutation({
+    //@ts-ignore
+    mutationFn: (jwt: string, newFirstName: string, newLastName: string) => {
+      return apiService.putProfile(jwt, newFirstName, newLastName);
+    },
+    onMutate: () => {},
+    onSuccess: (data: any, variables: any) => {
+      log("SUCCESS, USER INFOS:", data, variables);
+    },
+    onError: (error: any, variables: any) => {
+      log("FAILED TO RETRIEVE USER INFOS", error, variables);
     },
   });
 
@@ -130,12 +145,7 @@ export default function Profile(): JSX.Element {
       <section className="user">
         <div className="user__container">
           <div className="user__name-settings">
-            <h1 className="user__title">
-              Welcome back
-              <br />
-              {isOpen ? "" : "Firstname Lastname!"}
-            </h1>
-            <div
+            {/* <div
               className={`user__name-inputs-buttons ${
                 isOpen ? "show" : "hide"
               }`}
@@ -166,7 +176,8 @@ export default function Profile(): JSX.Element {
               buttonType="button"
               className={`user__button ${isOpen ? "hide" : "show"}`}
               callbackFunction={toggleNameSettings}
-            />
+            /> */}
+            <ChangeName />
           </div>
 
           <div className="user__accounts">

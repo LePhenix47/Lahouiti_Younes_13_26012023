@@ -1,11 +1,24 @@
 @use "../utils/" as *;
 
+//Shows the element
 .show {
     display: block;
 }
 
+
+//Hides the elements
 .hide {
     display: none;
 }
 
 // .active{}
+
+//Fades
+.fade-in {
+    animation: fade-in 400ms ease-in-out forwards;
+}
+
+//Fades
+.fade-out {
+    animation: fade-in 400ms ease-in-out forwards reverse;
+}

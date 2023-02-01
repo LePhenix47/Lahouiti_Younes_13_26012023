@@ -1,3 +1,4 @@
+//Animation for the spin-loader
 @keyframes buffer-animation {
 
     0% {
@@ -16,5 +17,16 @@
         stroke-dasharray: 314; //314
         stroke-dashoffset: 157; //157
         rotate: 360deg;
+    }
+}
+
+//Animation for the page transitions
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
