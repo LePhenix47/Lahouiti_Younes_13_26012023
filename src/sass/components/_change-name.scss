@@ -1,0 +1,46 @@
+@use "../utils/" as *;
+
+.change-name {
+
+    &__name-inputs-buttons {
+        @include grid(2, 2, 15px);
+
+        &.hide {
+            @include grid(1, 1, 15px);
+        }
+    }
+
+    &__title {
+        color: var(--color-quinary);
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &__input {
+        outline: 1px solid var(--input-border-color);
+
+        &:focus {
+            outline: 2px solid var(--input-border-color);
+
+        }
+
+        border-radius: 2px;
+        padding: 5px;
+        font-size: 19px;
+    }
+
+    &__save-button {
+        width: 150px;
+        margin-left: auto;
+    }
+
+    &__cancel-button {
+        width: 150px;
+        margin-right: auto;
+    }
+
+    &__button {
+        padding: 10px;
+    }
+}

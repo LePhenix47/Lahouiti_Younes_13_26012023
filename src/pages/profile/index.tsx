@@ -56,20 +56,6 @@ export default function Profile(): JSX.Element {
     },
   });
 
-  const patchNamesMutation = useMutation({
-    //@ts-ignore
-    mutationFn: (jwt: string, newFirstName: string, newLastName: string) => {
-      return apiService.putProfile(jwt, newFirstName, newLastName);
-    },
-    onMutate: () => {},
-    onSuccess: (data: any, variables: any) => {
-      log("SUCCESS, USER INFOS:", data, variables);
-    },
-    onError: (error: any, variables: any) => {
-      log("FAILED TO RETRIEVE USER INFOS", error, variables);
-    },
-  });
-
   //We cannot use the push() method of the router to redirect the user to the sign-in page
   //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
@@ -86,10 +72,12 @@ export default function Profile(): JSX.Element {
 
     log(jsonWebToken);
 
-    //@ts-ignore
-    if (!jsonWebToken) {
+    const noJWTInCookies: boolean = !jsonWebToken;
+
+    if (noJWTInCookies) {
       router.push("/sign-in/");
     } else {
+      //@ts-ignore
       userProfileMutation.mutate(jsonWebToken);
     }
   }, [jsonWebToken]);
@@ -126,7 +114,7 @@ export default function Profile(): JSX.Element {
       <section className="user">
         <div className="user__container">
           <div className="user__name-settings">
-            <ChangeName mutator={patchNamesMutation} />
+            <ChangeName />
           </div>
 
           <div className="user__accounts">

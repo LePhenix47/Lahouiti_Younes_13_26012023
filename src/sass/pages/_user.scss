@@ -24,50 +24,11 @@
         @include center-flex-column(25px);
     }
 
-    &__title {
-        color: var(--color-quinary);
-        font-size: 32px;
-        font-weight: 700;
-        text-align: center;
-    }
-
-    &__name-inputs-buttons {
-        @include grid(2, 2, 15px)
-    }
-
-    &__save-button {
-        width: 150px;
-        margin-left: auto;
-    }
-
-    &__cancel-button {
-        width: 150px;
-        margin-right: auto;
-    }
-
-    &__input {
-        outline: 1px solid var(--input-border-color);
-
-        &:focus {
-            outline: 2px solid var(--input-border-color);
-
-        }
-
-        border-radius: 2px;
-        padding: 5px;
-        font-size: 19px;
-    }
-
 
     &__subtitle {
         color: var(--color-quinary);
     }
 
-    &__button {
-        // color: var(--color-quinary);
-        padding: 10px;
-        font-size: 13px;
-    }
 
     &__accounts {
         display: flex;

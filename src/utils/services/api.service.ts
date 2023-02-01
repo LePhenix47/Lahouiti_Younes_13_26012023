@@ -77,6 +77,43 @@ export default class ApiService {
     //We return the response as a failure
     throw parsedResponse;
   }
+  /**
+   * Function expression that makes a `POST` request using `fetch`
+   */
+  private async putData(url: string, dataToSend: any, jsonWebToken?: string) {
+    //We need to send text to the API so we stringify it
+    const requestHasBody: boolean = !!dataToSend;
+
+    console.log({ url, dataToSend, jsonWebToken });
+    let stringifiedData: string;
+    if (requestHasBody) {
+      stringifiedData = JSON.stringify(dataToSend);
+    } else {
+      stringifiedData = "";
+    }
+
+    const response: any = await fetch(url, {
+      method: "PUT", //To post or modify data
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jsonWebToken}`,
+      },
+      body: stringifiedData,
+    });
+
+    //We want to returned parsed data as a promise
+    const parsedResponse: any = await response.json();
+
+    const statusIsOK: boolean = parsedResponse.status < 400;
+
+    //We return the response as a success
+    if (statusIsOK) {
+      return parsedResponse;
+    }
+
+    //We return the response as a failure
+    throw parsedResponse;
+  }
 
   /**
    * Posts the user email, fullname and email to create the user
@@ -126,12 +163,14 @@ export default class ApiService {
   ): Promise<any> {
     const url: string = `${this.BASE_URL}/profile/`;
 
+    console.log("putProfile method", { jwt, newFirstName, newLastName });
+
     const bodyOfRequest: {
       firstName: string;
       lastName: string;
     } = { firstName: newFirstName, lastName: newLastName };
 
-    const response: any = await this.postData(url, bodyOfRequest, jwt);
+    const response: any = await this.putData(url, bodyOfRequest, jwt);
 
     return response;
   }
