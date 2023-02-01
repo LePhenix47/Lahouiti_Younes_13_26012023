@@ -17,6 +17,7 @@
 3. [Miscellaneous](#3-miscellaneous) <br>
    3.1 [Folder-app structure](#31-folder-app-structure) <br>
    3.2 [Naming conventions](#32-naming-conventions) <br>
+   3.3 [Trivial information](#33-trivial-information) <br>
 
 # 1. Front-End
 
@@ -197,5 +198,10 @@ P13/
  const MAX_32_BIT_UNSIGNED_INTEGER = 2_147_483_647;
  ```
 
-This project has a responsive design and a dark/light theme
+
+## 3.3 Trivial information
+This project has: 
+ 
+ - A responsive design
+ - A dark/light theme
   
