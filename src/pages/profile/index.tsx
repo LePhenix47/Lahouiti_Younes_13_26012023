@@ -81,7 +81,6 @@ export default function Profile(): JSX.Element {
     //ERROR TO FIX
     const userIsNotLoggedIn: boolean = !userIsLoggedIn;
     if (userIsNotLoggedIn) {
-      router.push("/sign-in/");
     }
 
     //We recover the jwt inside the browser"s cookies
@@ -91,12 +90,10 @@ export default function Profile(): JSX.Element {
 
     log(jsonWebToken);
 
-    /**
-     * CANT USE HOOKS INSIDE OTHER HOOKS!
-     */
-
     //@ts-ignore
-    if (!!jsonWebToken) {
+    if (!jsonWebToken) {
+      router.push("/sign-in/");
+    } else {
       userProfileMutation.mutate(jsonWebToken);
     }
   }, [jsonWebToken]);
