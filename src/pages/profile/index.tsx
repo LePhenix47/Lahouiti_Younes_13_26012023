@@ -13,18 +13,18 @@ import Button from "../../components/Button/Button";
 import { log } from "../../utils/functions/helper-functions";
 import { savingsData } from "../../utils/variables/savings-data";
 import CookieService from "@/utils/services/cookies.service";
+import ApiService from "@/utils/services/api.service";
 
 //Redux
 //React-Redux
 import { useSelector } from "react-redux";
-import ApiService from "@/utils/services/api.service";
 import { useMutation } from "@tanstack/react-query";
 
 //This is the page of the user
 /**
  * User page
  *
- * Route: `/user/`
+ * Route: `/profile/`
  *  */
 export default function Profile(): JSX.Element {
   // log({ jsonWebToken });
@@ -36,8 +36,6 @@ export default function Profile(): JSX.Element {
   //We're going to use the router hook to get the current to redirect the user
   //if they're not logged in
   const router: NextRouter = useRouter();
-
-  log({ router });
 
   //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -58,6 +56,24 @@ export default function Profile(): JSX.Element {
     setIsOpen(!isOpen);
   }
 
+  let jsonWebToken: string | undefined = undefined;
+
+  //We make the POST request
+  const apiService: ApiService = new ApiService();
+
+  const userProfileMutation = useMutation({
+    mutationFn: (jwt: string) => {
+      return apiService.postProfile(jwt);
+    },
+    onMutate: () => {},
+    onSuccess: (data, variables) => {
+      log("SUCCESS, USER INFOS:", data);
+    },
+    onError: () => {
+      log("FAILED TO RETRIEVE USER INFOS");
+    },
+  });
+
   //We cannot use the push() method of the router to redirect the user to the sign-in page
   //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
@@ -71,29 +87,19 @@ export default function Profile(): JSX.Element {
     //We recover the jwt inside the browser"s cookies
     const cookieCreator: CookieService = new CookieService();
 
-    let jsonWebToken: string | undefined =
-      cookieCreator.getCookieByName("jwt")?.value;
+    jsonWebToken = cookieCreator.getCookieByName("jwt")?.value;
 
     log(jsonWebToken);
-
-    //We make the POST request
-    const apiService: ApiService = new ApiService();
 
     /**
      * CANT USE HOOKS INSIDE OTHER HOOKS!
      */
-    // const userProfileMutation = useMutation({
-    //   mutationFn: (jwt: string) => {
-    //     return apiService.postProfile(jwt);
-    //   },
-    //   onMutate: () => {},
-    //   onSuccess: (data, variables) => {},
-    //   onError: () => {},
-    // });
 
-    // //@ts-ignore
-    // userProfileMutation.mutate(jsonWebToken);
-  });
+    //@ts-ignore
+    if (!!jsonWebToken) {
+      userProfileMutation.mutate(jsonWebToken);
+    }
+  }, [jsonWebToken]);
 
   return (
     <>
@@ -105,7 +111,7 @@ export default function Profile(): JSX.Element {
         <meta name="description" content="This is the your bank account page" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="User page" />
+        <meta property="og:title" content="Profile page" />
         <meta
           property="og:description"
           content="This is the your bank account page"
@@ -117,7 +123,7 @@ export default function Profile(): JSX.Element {
         {/*
          <!--Title--> 
          */}
-        <title>User</title>
+        <title>Profile page</title>
 
         {/*
          <!--Page logo--> 

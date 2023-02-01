@@ -45,7 +45,14 @@ export default class ApiService {
    */
   private async postData(url: string, dataToSend: any, jsonWebToken?: string) {
     //We need to send text to the API so we stringify it
-    const stringifiedData: string = JSON.stringify(dataToSend);
+    const requestHasBody: boolean = !!dataToSend;
+
+    let stringifiedData: string;
+    if (requestHasBody) {
+      stringifiedData = JSON.stringify(dataToSend);
+    } else {
+      stringifiedData = "";
+    }
 
     const response: any = await fetch(url, {
       method: "POST", //To post or modify data
@@ -59,7 +66,7 @@ export default class ApiService {
     //We want to returned parsed data as a promise
     const parsedResponse: any = await response.json();
 
-    const statusIsOK: boolean = parsedResponse.status === 200;
+    const statusIsOK: boolean = parsedResponse.status < 400;
 
     //We return the response as a success
     if (statusIsOK) {

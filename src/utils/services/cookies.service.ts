@@ -33,10 +33,10 @@ export default class CookieService {
       let nextWeekDate: Date = new Date(
         todayInMilliseconds + sevenDaysInMilliseconds
       );
-      document.cookie = `${name}=${value}; expires="${nextWeekDate}"`;
+      document.cookie = `${name}=${value}; expires="${nextWeekDate}"; sameSite=strict"`;
     }
 
-    return (document.cookie = `${name}=${value}`);
+    return (document.cookie = `${name}=${value}; sameSite=strict`);
   }
 
   /**
