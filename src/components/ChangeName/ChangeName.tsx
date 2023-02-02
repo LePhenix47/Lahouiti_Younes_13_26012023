@@ -87,8 +87,14 @@ export default function ChangeName(): JSX.Element {
     const userDidNotChangeNames: boolean =
       newFirstName === userFirstName && newLastName === userLastName;
 
+    const inputsAreNotEmpty = newFirstName?.length && newLastName?.length;
+
     //We prevent the user from making useless API calls
     if (userDidNotChangeNames) {
+      return;
+    }
+
+    if (!inputsAreNotEmpty) {
       return;
     }
     //We recover the jwt inside the browser"s cookies

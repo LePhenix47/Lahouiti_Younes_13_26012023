@@ -29,6 +29,12 @@ import { setLastName } from "@/redux/features/last-name/last-name.actions";
  * User page
  *
  * Route: `/profile/`
+ *
+ * There might be hydration issues on this page
+ *
+ * **To fix them, view the article:**
+ *
+ * [Error hydration failed because the initial UI does not match what was rendered on the server](https://traviswimer.com/blog/error-hydration-failed-because-the-initial-ui-does-not-match-what-was-rendered-on-the-server/)
  *  */
 export default function Profile(): JSX.Element {
   //We IMPORT the value of the logging state of the user when logging in
@@ -85,11 +91,10 @@ export default function Profile(): JSX.Element {
 
     jsonWebToken = cookieCreator.getCookieByName("jwt")?.value;
 
-    log(jsonWebToken);
-
     const noJWTInCookies: boolean = !jsonWebToken;
 
     if (noJWTInCookies) {
+      //We redirect the user to the log-in page
       router.push("/sign-in/");
     } else {
       //@ts-ignore

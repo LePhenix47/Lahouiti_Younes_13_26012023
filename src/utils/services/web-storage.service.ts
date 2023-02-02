@@ -13,7 +13,7 @@ export class WebStorageService {
   /**
    * Stores a key-value pair in the local storage
    */
-  setKey(key: string, value: string, inSession?: boolean): void {
+  static setKey(key: string, value: any, inSession?: boolean): void {
     const strinfigiedValue: string = JSON.stringify(value);
 
     //If the user stored the pair inside the session storage
@@ -26,7 +26,7 @@ export class WebStorageService {
   /**
    * Retrieves a key-value pair, if the key isn't found in the WebStorage, it returns null
    */
-  getKey(key: string, inSession?: boolean): string | null {
+  static getKey(key: string, inSession?: boolean): string | null {
     let parsedItem: string | null = JSON.parse(
       //@ts-ignore
       localStorage.getItem(key) as string
@@ -47,7 +47,7 @@ export class WebStorageService {
   /**
    * Deletes a settled key-value pair in either the local or session storage
    */
-  removeKey(key: string, inSession?: boolean): void {
+  static removeKey(key: string, inSession?: boolean): void {
     if (inSession) {
       return sessionStorage.removeItem(key);
     }
