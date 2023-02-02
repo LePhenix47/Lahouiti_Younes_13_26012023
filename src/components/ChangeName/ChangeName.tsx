@@ -14,6 +14,9 @@ import { log } from "@/utils/functions/helper-functions";
 import { setFirstName } from "@/redux/features/first-name/first-name.actions";
 import { setLastName } from "@/redux/features/last-name/last-name.actions";
 import { useDispatch, useSelector } from "react-redux";
+import SpinLoader from "../SpinLoader/SpinLoader";
+import ApiError from "../ApiError/ApiError";
+import ApiSuccess from "../ApiSuccess/ApiSuccess";
 
 export default function ChangeName(): JSX.Element {
   const dispatch = useDispatch();
@@ -81,6 +84,13 @@ export default function ChangeName(): JSX.Element {
     const newFirstName: string | undefined = firstNameRef?.current?.value;
     const newLastName: string | undefined = lastNameRef?.current?.value;
 
+    const userDidNotChangeNames: boolean =
+      newFirstName === userFirstName || newLastName === userLastName;
+
+    //We prevent the user from making useless API calls
+    if (userDidNotChangeNames) {
+      return;
+    }
     //We recover the jwt inside the browser"s cookies
     const cookieCreator: CookieService = new CookieService();
 
@@ -100,6 +110,14 @@ export default function ChangeName(): JSX.Element {
         <br />
         {isOpen ? "" : `${userFirstName} ${userLastName}!`}
       </h1>
+      {patchNamesMutation.isLoading && <SpinLoader width={100} />}
+      {patchNamesMutation.isError && (
+        <ApiError message="An unexpected error occured" />
+      )}
+      {isOpen && patchNamesMutation.isSuccess && (
+        <ApiSuccess data={null} message="Name successfully changed!" />
+      )}
+
       <div
         className={`change-name__name-inputs-buttons ${
           isOpen ? "show" : "hide"

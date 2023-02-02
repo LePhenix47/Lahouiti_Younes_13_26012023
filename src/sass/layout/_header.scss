@@ -23,6 +23,10 @@
         &>span {
             color: var(--color-tertiary);
         }
+
+        @include mobile-only {
+            font-size: 24px;
+        }
     }
 
 
