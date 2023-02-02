@@ -110,12 +110,14 @@ export default function ChangeName(): JSX.Element {
           className={`change-name__input ${isOpen ? "show" : "hide"}`}
           placeholder="First name"
           ref={firstNameRef}
+          defaultValue={userFirstName}
         />
         <input
           type="text"
           className={`change-name__input ${isOpen ? "show" : "hide"}`}
           placeholder="Last name"
           ref={lastNameRef}
+          defaultValue={userLastName}
         />
         <Button
           buttonText="Save"

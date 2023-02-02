@@ -2,14 +2,8 @@
 //Redux toolkit
 import { createReducer } from "@reduxjs/toolkit";
 
-//Immer
-import produce from "immer";
-
-//Initial state
-import { initialState } from "../../initial-state";
-
 //Actions
-import { logIn, logOut } from "./log-in.actions";
+import { logIn } from "./log-in.actions";
 
 /**
  * **Reducer for the login**
@@ -23,9 +17,7 @@ import { logIn, logOut } from "./log-in.actions";
  */
 export const logInReducer = createReducer(false, (builder) => {
   builder.addCase(logIn, (state, action) => {
-    return true;
-  });
-  builder.addCase(logOut, (state, action) => {
-    return false;
+    state = action.payload;
+    return state;
   });
 });

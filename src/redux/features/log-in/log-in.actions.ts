@@ -22,9 +22,3 @@ import { createAction } from "@reduxjs/toolkit";
  * to allow the user to access the user page
  */
 export const logIn = createAction<boolean>("logIn");
-
-/**
- * Action of the reducer `logInReducer` supposed to set the `isLoggedIn` state to `false`
- * to log out the user and prevent them from entering the user page
- */
-export const logOut = createAction<boolean>("logOut");

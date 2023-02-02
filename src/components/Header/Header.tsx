@@ -8,7 +8,7 @@ import { log } from "@/utils/functions/helper-functions";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "@/redux/features/log-in/log-in.actions";
+import { logIn } from "@/redux/features/log-in/log-in.actions";
 import { setFirstName } from "@/redux/features/first-name/first-name.actions";
 import { setLastName } from "@/redux/features/last-name/last-name.actions";
 
@@ -52,7 +52,7 @@ export default function Header(): JSX.Element {
    */
   function logUserOut(): void {
     //Logs out and resets the first and last name
-    dispatch(logOut(true));
+    dispatch(logIn(false));
     dispatch(setFirstName(""));
     dispatch(setLastName(""));
 

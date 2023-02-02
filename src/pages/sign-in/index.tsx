@@ -1,5 +1,5 @@
 //React
-import { logIn, logOut } from "@/redux/features/log-in/log-in.actions";
+import { logIn } from "@/redux/features/log-in/log-in.actions";
 
 //Next
 import Head from "next/head";
