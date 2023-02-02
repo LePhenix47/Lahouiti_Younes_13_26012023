@@ -85,7 +85,7 @@ export default function ChangeName(): JSX.Element {
     const newLastName: string | undefined = lastNameRef?.current?.value;
 
     const userDidNotChangeNames: boolean =
-      newFirstName === userFirstName || newLastName === userLastName;
+      newFirstName === userFirstName && newLastName === userLastName;
 
     //We prevent the user from making useless API calls
     if (userDidNotChangeNames) {
@@ -100,7 +100,7 @@ export default function ChangeName(): JSX.Element {
     //@ts-ignore Makes the POST API call
     patchNamesMutation.mutate({ jwt: jsonWebToken, newFirstName, newLastName });
 
-    setIsOpen(!isOpen);
+    // setIsOpen(!isOpen);
   }
 
   return (
