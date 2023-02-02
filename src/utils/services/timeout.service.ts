@@ -36,6 +36,8 @@ export class Timeout {
   /**
    * Removes the timeout by its id
    *
+   * **The id is the variable in which the timeout has been assigned to**
+   *
    * Here's an example:
    * ```js
    * const timeoutCreator = new Timeout();

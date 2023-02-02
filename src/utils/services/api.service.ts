@@ -78,7 +78,7 @@ export default class ApiService {
     throw parsedResponse;
   }
   /**
-   * Function expression that makes a `POST` request using `fetch`
+   * Function expression that makes a `PUT` request using `fetch`
    */
   private async putData(url: string, dataToSend: any, jsonWebToken?: string) {
     //We need to send text to the API so we stringify it
