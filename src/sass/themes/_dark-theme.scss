@@ -23,11 +23,12 @@
     $scrollbar-thumb-color--active: lighten($color-tertiary, 10%);
 
 
-    $error-color: #ba0000;
+    $error-color: #290000;
+    $error-icon-color: #eb3941;
     $success-color: darkgreen;
+    $success-icon-color: #77ff83;
 
     //CSS variables
-
     :root {
         --bg-primary: #{$bg-primary};
         --bg-secondary: #{$bg-secondary};
@@ -50,7 +51,9 @@
         --scrollbar-thumb-color--active:#{$scrollbar-thumb-color--active};
 
         --error-color:#{$error-color};
+        --error-icon-color:#{$error-icon-color};
         --success-color:#{$success-color};
+        --success-icon-color:#{$success-icon-color};
 
         //Pixel and percentages
 

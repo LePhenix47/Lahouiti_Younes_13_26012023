@@ -16,6 +16,7 @@ export default function ChangeName(): JSX.Element {
   //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  //Refs to get the values of the inputs later
   const firstNameRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
 
   const lastNameRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
@@ -58,8 +59,8 @@ export default function ChangeName(): JSX.Element {
    * Function that saves the changes made to the user
    */
   function saveNameSettings(): void {
-    const newFirstName = firstNameRef?.current?.value;
-    const newLastName = lastNameRef?.current?.value;
+    const newFirstName: string | undefined = firstNameRef?.current?.value;
+    const newLastName: string | undefined = lastNameRef?.current?.value;
 
     //We recover the jwt inside the browser"s cookies
     const cookieCreator: CookieService = new CookieService();
@@ -67,7 +68,7 @@ export default function ChangeName(): JSX.Element {
     let jsonWebToken: string | undefined =
       cookieCreator.getCookieByName("jwt")?.value;
 
-    //@ts-ignore
+    //@ts-ignore Makes the POST API call
     patchNamesMutation.mutate({ jwt: jsonWebToken, newFirstName, newLastName });
 
     setIsOpen(!isOpen);
@@ -78,7 +79,7 @@ export default function ChangeName(): JSX.Element {
       <h1 className="change-name__title">
         Welcome back
         <br />
-        {isOpen ? "" : "Firstname Lastname!"}
+        {isOpen ? "" : `Firstname Lastname!`}
       </h1>
       <div
         className={`change-name__name-inputs-buttons ${

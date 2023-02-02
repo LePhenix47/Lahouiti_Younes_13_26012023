@@ -20,11 +20,12 @@ $scrollbar-thumb-color: $color-secondary;
 $scrollbar-thumb-color--hover: lighten($color-secondary, 10%);
 $scrollbar-thumb-color--active: darken($color-secondary, 10%);
 
-$error-color: red;
+$error-color: #290000;
+$error-icon-color: #eb3941;
 $success-color: darkgreen;
+$success-icon-color: #77ff83;
 
 //
-$image-inversion: 0%;
 //CSS variables
 
 :root {
@@ -51,5 +52,7 @@ $image-inversion: 0%;
     --scrollbar-thumb-color--active:#{$scrollbar-thumb-color--active};
 
     --error-color:#{$error-color};
+    --error-icon-color:#{$error-icon-color};
     --success-color:#{$success-color};
+    --success-icon-color:#{$success-icon-color};
 }

@@ -1,9 +1,18 @@
 @use "../utils/" as *;
 
 .server-error {
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--error-icon-color);
 
     background-color: var(--error-color);
+
+    &__svg {
+        float: left;
+        margin-left: 15px;
+        width: 30px;
+        height: 30px;
+        color: var(--error-icon-color);
+    }
 
     &__status {
         text-align: center;
@@ -12,6 +21,7 @@
     }
 
     &__message {
+        text-align: center;
         font-family: Consolas, 'monospace';
         font-size: 16px;
         padding: 15px;

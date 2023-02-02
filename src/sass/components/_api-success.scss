@@ -1,21 +1,35 @@
 @use "../utils/" as *;
 
 .server-success {
-    border-radius: 10px;
+    border: 2px solid var(--success-icon-color);
+    border-radius: 5px;
 
     background-color: var(--success-color);
+
+    &__svg {
+        width: 25px;
+        height: 25px;
+
+        float: left; //Because we're inside an inline element we use this property
+
+        margin-left: 15px;
+
+        color: var(--success-icon-color);
+    }
 
     &__status {
         text-align: center;
         text-decoration: underline;
+
         padding: 15px;
     }
 
     &__message {
         font-family: Consolas, 'monospace';
         font-size: 16px;
+
         padding: 15px;
-        text-align: justify;
+
         word-wrap: break-word;
     }
 }
