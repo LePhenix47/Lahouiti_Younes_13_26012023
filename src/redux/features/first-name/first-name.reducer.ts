@@ -9,10 +9,10 @@ import produce from "immer";
 import { initialState } from "../../initial-state";
 
 //Actions
-import { logIn, logOut } from "./log-in.actions";
+import { getFirstName, setFirstName } from "./first-name.actions";
 
 /**
- * **Reducer for the login**
+ * **Reducer for the first and last name**
  *
  *
  * *Reminder:*
@@ -21,11 +21,13 @@ import { logIn, logOut } from "./log-in.actions";
  *
  * Used to handle the app state changes
  */
-export const logInReducer = createReducer(false, (builder) => {
-  builder.addCase(logIn, (state, action) => {
-    return true;
+export const firstNameReducer = createReducer("", (builder) => {
+  builder.addCase(setFirstName, (state, action) => {
+    state = action.payload;
+    return state;
   });
-  builder.addCase(logOut, (state, action) => {
-    return false;
+
+  builder.addCase(getFirstName, (state, action) => {
+    return action.payload;
   });
 });

@@ -1,13 +1,16 @@
 //React
 import { useEffect, useState } from "react";
 
+//TanStack Query
+import { useMutation } from "@tanstack/react-query";
+
 //Next
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 
 //Components
 import AccountCard from "@/components/AccountCard/AccountCard";
-import Button from "../../components/Button/Button";
+import ChangeName from "@/components/ChangeName/ChangeName";
 
 //Utils
 import { log } from "../../utils/functions/helper-functions";
@@ -18,8 +21,6 @@ import ApiService from "@/utils/services/api.service";
 //Redux
 //React-Redux
 import { useSelector } from "react-redux";
-import { useMutation } from "@tanstack/react-query";
-import ChangeName from "@/components/ChangeName/ChangeName";
 
 //This is the page of the user
 /**
