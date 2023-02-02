@@ -9,7 +9,7 @@ import produce from "immer";
 import { initialState } from "../../initial-state";
 
 //Actions
-import { getFirstName, setFirstName } from "./first-name.actions";
+import { setFirstName } from "./first-name.actions";
 
 /**
  * **Reducer for the first and last name**
@@ -25,9 +25,5 @@ export const firstNameReducer = createReducer("", (builder) => {
   builder.addCase(setFirstName, (state, action) => {
     state = action.payload;
     return state;
-  });
-
-  builder.addCase(getFirstName, (state, action) => {
-    return action.payload;
   });
 });

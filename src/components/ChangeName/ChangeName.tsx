@@ -11,8 +11,21 @@ import ApiService from "@/utils/services/api.service";
 //TanStack Query
 import { useMutation } from "@tanstack/react-query";
 import { log } from "@/utils/functions/helper-functions";
+import { setFirstName } from "@/redux/features/first-name/first-name.actions";
+import { setLastName } from "@/redux/features/last-name/last-name.actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ChangeName(): JSX.Element {
+  const dispatch = useDispatch();
+
+  const userFirstName = useSelector((state: any) => {
+    return state.firstName;
+  });
+
+  const userLastName = useSelector((state: any) => {
+    return state.lastName;
+  });
+
   //Local state to open/close the settings to change the name
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -24,6 +37,9 @@ export default function ChangeName(): JSX.Element {
   //We make the POST request
   const apiService: ApiService = new ApiService();
 
+  /**
+   * Mutator that makes the PUT API call to change the user's first and/or last name
+   */
   const patchNamesMutation = useMutation({
     //@ts-ignore
     mutationFn: ({
@@ -36,6 +52,9 @@ export default function ChangeName(): JSX.Element {
       newLastName: string;
     }) => {
       console.log("patchNamesMutation", { jwt, newFirstName, newLastName });
+
+      dispatch(setFirstName(newFirstName));
+      dispatch(setLastName(newLastName));
 
       return apiService.putProfile(jwt, newFirstName, newLastName);
     },
@@ -79,7 +98,7 @@ export default function ChangeName(): JSX.Element {
       <h1 className="change-name__title">
         Welcome back
         <br />
-        {isOpen ? "" : `Firstname Lastname!`}
+        {isOpen ? "" : `${userFirstName} ${userLastName}!`}
       </h1>
       <div
         className={`change-name__name-inputs-buttons ${

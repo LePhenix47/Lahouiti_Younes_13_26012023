@@ -3,7 +3,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 //Actions
-import { setLastName, getLastName } from "./last-name.actions";
+import { setLastName } from "./last-name.actions";
 
 /**
  * **Reducer for the first and last name**
@@ -19,9 +19,5 @@ export const lastNameReducer = createReducer("", (builder) => {
   builder.addCase(setLastName, (state, action) => {
     state = action.payload;
     return state;
-  });
-
-  builder.addCase(getLastName, (state, action) => {
-    return action.payload;
   });
 });

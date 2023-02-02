@@ -20,7 +20,9 @@ import ApiService from "@/utils/services/api.service";
 
 //Redux
 //React-Redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setFirstName } from "@/redux/features/first-name/first-name.actions";
+import { setLastName } from "@/redux/features/last-name/last-name.actions";
 
 //This is the page of the user
 /**
@@ -29,11 +31,12 @@ import { useSelector } from "react-redux";
  * Route: `/profile/`
  *  */
 export default function Profile(): JSX.Element {
-  // log({ jsonWebToken });
   //We IMPORT the value of the logging state of the user when logging in
   const userIsLoggedIn: boolean = useSelector((state: any) => {
     return state.isLoggedIn;
   });
+
+  const dispatch = useDispatch();
 
   //We're going to use the router hook to get the current to redirect the user
   //if they're not logged in
@@ -44,6 +47,9 @@ export default function Profile(): JSX.Element {
   //We make the POST request
   const apiService: ApiService = new ApiService();
 
+  /**
+   * Mutator that makes the POST API call to retrieve the user infos
+   */
   const userProfileMutation = useMutation({
     mutationFn: (jwt: string) => {
       return apiService.postProfile(jwt);
@@ -51,6 +57,14 @@ export default function Profile(): JSX.Element {
     onMutate: () => {},
     onSuccess: (data: any, variables: any) => {
       log("SUCCESS, USER INFOS:", data, variables);
+
+      const currentFirstName: string = data.body.firstName;
+      const currentLastName: string = data.body.lastName;
+
+      dispatch(setFirstName(currentFirstName));
+      dispatch(setLastName(currentLastName));
+
+      log({ currentFirstName, currentLastName });
     },
     onError: (error: any, variables: any) => {
       log("FAILED TO RETRIEVE USER INFOS", error, variables);
