@@ -207,4 +207,5 @@ This project has:
  
  - A responsive design
  - A dark/light theme
+ - A Swagger API documentation with this address: http://localhost:3001/api-docs/#/
   
