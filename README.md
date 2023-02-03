@@ -4,7 +4,7 @@
 1. [Front-End](#1-front-end) <br>
  1.1 [Front-End stack](#11-front-end-stack)<br>
  1.2 [Libraries used](#12-libraries-used)<br>
- 1.3 [Installation guide](#13-installation-guide)<br>
+ 1.3 [Front-End installation guide](#13-front-end-installation-guide)<br>
  1.4 [Launching the project](#14-launching-the-project)<br>
  1.5 [Other commands](#15-other-commands)<br>
 
@@ -47,7 +47,7 @@
 <img src="./public/images/svg/tanstack-query.svg" width="40" height="36" alt="TanStack Query(React Query)"/>
 </a>
 
-## 1.3 Installation guide
+## 1.3 Front-End installation guide
 
 The project uses Node packages and uses `npm`, so the installation of Node.js in your IDE is required
 
@@ -215,5 +215,6 @@ This project has:
  
  - A responsive design
  - A dark/light theme
- - A Swagger API documentation with this address: http://localhost:3001/api-docs/#/
+ - A Swagger API documentation is available in this address: http://localhost:3001/api-docs/#/
+ - This project uses SSR (Server-side rendering)
   
