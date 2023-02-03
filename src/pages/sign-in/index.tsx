@@ -15,7 +15,7 @@ import CookieService from "@/utils/services/cookies.service";
 
 //Redux
 import { useDispatch } from "react-redux";
-import { MutableRefObject, useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 
 //TanStack Query
 import { useMutation } from "@tanstack/react-query";
@@ -109,6 +109,20 @@ export default function SignIn(): JSX.Element {
 
     log({ event }, { email, password, checkedCheckbox });
   }
+
+  useEffect(() => {
+    //We recover the jwt inside the browser"s cookies
+    const cookieCreator: CookieService = new CookieService();
+
+    let jsonWebToken = cookieCreator.getCookieByName("jwt")?.value;
+
+    const JWTInCookies: boolean = !!jsonWebToken;
+
+    if (JWTInCookies) {
+      //We redirect the user to the log-in page
+      router.push("/profile/");
+    }
+  });
 
   return (
     <>

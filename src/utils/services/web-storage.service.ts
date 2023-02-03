@@ -5,13 +5,13 @@
  * - `sessionStorage`
  *
  *
- * **WITHOUT** the need to stringify or parse when using the native Web Storage API methods
+ * **WITHOUT** the need to stringify or parse
  */
 export class WebStorageService {
   constructor() {}
 
   /**
-   * Stores a key-value pair in the local storage
+   * Stores a key-value pair in the WebStorage
    */
   static setKey(key: string, value: any, inSession?: boolean): void {
     const strinfigiedValue: string = JSON.stringify(value);
@@ -45,7 +45,7 @@ export class WebStorageService {
   }
 
   /**
-   * Deletes a settled key-value pair in either the local or session storage
+   * Deletes a settled key-value pair in either the WebStorage
    */
   static removeKey(key: string, inSession?: boolean): void {
     if (inSession) {

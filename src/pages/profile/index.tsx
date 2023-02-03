@@ -23,6 +23,7 @@ import ApiService from "@/utils/services/api.service";
 import { useDispatch, useSelector } from "react-redux";
 import { setFirstName } from "@/redux/features/first-name/first-name.actions";
 import { setLastName } from "@/redux/features/last-name/last-name.actions";
+import { WebStorageService } from "@/utils/services/web-storage.service";
 
 //This is the page of the user
 /**
@@ -71,6 +72,11 @@ export default function Profile(): JSX.Element {
       dispatch(setLastName(currentLastName));
 
       log({ currentFirstName, currentLastName });
+
+      WebStorageService.setKey("userFullname", {
+        currentFirstName,
+        currentLastName,
+      });
     },
     onError: (error: any, variables: any) => {
       log("FAILED TO RETRIEVE USER INFOS", error, variables);
@@ -80,12 +86,6 @@ export default function Profile(): JSX.Element {
   //We cannot use the push() method of the router to redirect the user to the sign-in page
   //if the user isn't logged in because of the SSR (push is client side only)
   useEffect(() => {
-    //If the user isn't logged in we redirect them to the sign-in page
-    //ERROR TO FIX
-    const userIsNotLoggedIn: boolean = !userIsLoggedIn;
-    if (userIsNotLoggedIn) {
-    }
-
     //We recover the jwt inside the browser"s cookies
     const cookieCreator: CookieService = new CookieService();
 

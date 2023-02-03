@@ -1,5 +1,4 @@
 //Next
-import { NextRouter, useRouter } from "next/router";
 import Link from "next/link";
 
 //Utils
@@ -30,20 +29,6 @@ export default function Header(): JSX.Element {
 
   log({ userIsLoggedIn });
 
-  //We're going to use the router hook to get the path the user is in
-  const route: NextRouter = useRouter();
-
-  //We create contextualized constants to make the code more inteligible
-  const HOME_PAGE: string = "/";
-  const LOGIN_PAGE: string = "/sign-in";
-  const PROFILE_PAGE: string = "/profile";
-
-  //We create constants to contextualize structural conditions
-  const isHomeOrLoginPage: boolean =
-    route.asPath === HOME_PAGE || route.asPath === LOGIN_PAGE;
-
-  const isUserPage: boolean = route.asPath === PROFILE_PAGE;
-
   //We manage the jwt with our cookie service
   const cookieService: CookieService = new CookieService();
 
@@ -67,9 +52,7 @@ export default function Header(): JSX.Element {
       <nav className="header__navigation-bar">
         <ul className="header__unordered-list">
           <li
-            className={`header__list-item ${
-              isHomeOrLoginPage ? "show" : "hide"
-            }`}
+            className={`header__list-item ${!userIsLoggedIn ? "show" : "hide"}`}
           >
             <Link href="/sign-in">
               <i
@@ -79,13 +62,17 @@ export default function Header(): JSX.Element {
               Sign-in
             </Link>
           </li>
-          <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
+          <li
+            className={`header__list-item ${userIsLoggedIn ? "show" : "hide"}`}
+          >
             <Link href="/profile">
               <i className="fa fa-user-circle header__sign-in-logo"></i>
               {userFirstName}
             </Link>
           </li>
-          <li className={`header__list-item ${isUserPage ? "show" : "hide"}`}>
+          <li
+            className={`header__list-item ${userIsLoggedIn ? "show" : "hide"}`}
+          >
             <Link
               href="/"
               onClick={() => {

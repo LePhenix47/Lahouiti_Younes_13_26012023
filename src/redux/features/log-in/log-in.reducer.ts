@@ -20,14 +20,6 @@ export const logInReducer = createReducer(false, (builder) => {
   builder.addCase(logIn, (state, action) => {
     state = action.payload;
 
-    // const userWantsToLogin: boolean = !!action.payload;
-
-    // if (userWantsToLogin) {
-    //   WebStorageService.setKey("isLoggedIn", action.payload);
-    // } else {
-    //   WebStorageService.removeKey("isLoggedIn");
-    // }
-
     return state;
   });
 });
