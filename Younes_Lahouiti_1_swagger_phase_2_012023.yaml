@@ -1,0 +1,354 @@
+swagger: '2.0'
+info:
+  title: Phase 2 of the Bank Argent API documentation
+  description: Contains the conceptualized `/transactions/` route for the API
+  termsOfService: http://swagger.io/terms/
+  
+
+servers:
+  - url: localhost:3001/api/v1
+
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+
+paths:
+  /{accountId}/transactions/:
+    post:
+      tags:
+        - Transactions Module
+      summary: Account transactions
+      description: API to fetch the user account(s)'s transactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: "\"Bearer [JWT]"
+          required: true
+
+        - in: body
+          name: Body of the request
+          description: Fetch the account transactions infos
+          required: true
+          schema:
+            $ref: '#/definitions/Transactions'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionsResponse'
+      
+        '400':
+          description: Bad request
+        '401':
+           description: Unauthenticated
+        '403':
+           description: Unauthorized
+        '404':
+           description: Not found
+
+        '500':
+          description: Internal Server Error
+
+  /{accountId}/transactions/{transactionId}/:
+    post:
+      tags:
+        - Transactions Module
+      summary: Account's singular transaction
+      description: API to fetch a particular transaction
+      parameters:
+        - in: header
+          type:  string
+          name: Authorization
+          description: "\"Bearer [JWT]"
+          required: true
+
+        - in: body
+          name: Body of the request
+          description: Fetch the infos if a particular transaction
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionId'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionIdResponse'
+      
+        '400':
+          description: Bad request
+        '401':
+           description: Unauthenticated
+        '403':
+           description: Unauthorized
+        '404':
+           description: Not found
+
+        '500':
+          description: Internal Server Error
+
+  /{accountId}/transactions/{transactionId}/other:
+    post:
+      tags:
+        - Transactions Module
+      summary: Creates transaction info
+      description: Creates a note for the transaction
+      parameters:
+        - in: header
+          type:  string
+          name: Authorization
+          description: "\"Bearer [JWT]"
+          required: true
+
+        - in: body
+          name: Body of the request
+          description: Adds notes to the transaction
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsOtherPost'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionsOtherPostResponse'
+      
+        '400':
+          description: Bad request
+        '401':
+           description: Unauthenticated
+        '403':
+           description: Unauthorized
+        '404':
+           description: Not found
+
+        '500':
+          description: Internal Server Error
+ 
+    put:
+      tags:
+        - Transactions Module
+      summary: Changes transaction infos
+      description: Changes the notes or the category of the transaction
+      parameters:
+        - in: header
+          type:  string
+          name: Authorization
+          description: "\"Bearer [JWT]"
+          required: true
+
+        - in: body
+          name: Body of the request
+          description: Changes the notes and/or the category of the transaction 
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsOtherPut'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionsOtherPutResponse'
+      
+        '400':
+          description: Bad request
+        '401':
+           description: Unauthenticated
+        '403':
+           description: Unauthorized
+        '404':
+           description: Not found
+
+        '500':
+          description: Internal Server Error
+
+    delete:
+      tags:
+        - Transactions Module
+      summary: Deletes transaction infos
+      description: Deletes the notes or the category of the transaction
+      parameters:
+        - in: header
+          type:  string
+          name: Authorization
+          description: "\"Bearer [JWT]"
+          required: true
+
+        - in: body
+          name: Body of the request
+          description: Deletes the notes and/or the category
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsOtherDelete'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionsOtherDeleteResponse'
+      
+        '400':
+          description: Bad request
+        '401':
+           description: Unauthenticated
+        '403':
+           description: Unauthorized
+        '404':
+           description: Not found
+
+        '500':
+          description: Internal Server Error
+ 
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+# Schemas
+definitions:
+  # All transactions request payload
+  Transactions:
+    properties:
+      accountId:
+        type: string
+        description: ID of the account
+  # All transactions response payload
+  TransactionsResponse:
+    type: array
+    items:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: ID of a transaction
+        date:
+          type: string
+          description: Date of the transaction
+        description:
+          type: string
+          description: Description of the transaction
+        amount:
+          type: number
+          description: Amount spent in the transaction
+        balance:
+          type: number
+          description: Account's balance after the transaction
+     
+# Transaction request payload
+  TransactionId:
+      properties:
+        accountId:
+          type: string
+          description: ID of the account
+        transactionId:
+          type: string
+          description: ID of the account
+
+# Transaction response payload
+  TransactionIdResponse:
+      properties:
+          transactionId:
+            type: string
+            description: ID of a transaction
+          date:
+            type: string
+            description: Date of the transaction
+          description:
+            type: string
+            description: Description of the transaction
+          amount:
+            type: number
+            description: Amount spent in the transaction
+          balance:
+            type: number
+            description: Account's balance after the transaction
+          transactionType:
+            type: string
+            description: Type of payment for the transaction
+          category:
+            type: string
+            description: Category of the transaction
+          notes:
+            type: string
+            description: User notes of the transaction
+     
+# Other info of transaction request payload
+  TransactionsOtherPost:
+      properties:
+        accountId:
+          type: string
+          description: ID of the account
+        transactionId:
+          type: string
+          description: ID of the transaction
+        notes:
+          type: string
+          description: Notes of the transaction
+
+# Other info of transaction response payload
+  TransactionsOtherPostResponse:
+      properties:
+            message:
+              type: string
+              description: Message of success
+
+
+     
+# Other info of transaction request payload
+  TransactionsOtherPut:
+      properties:
+        accountId:
+          type: string
+          description: ID of the account
+        transactionId:
+          type: string
+          description: ID of the transaction
+        notes:
+          type: string
+          description: Notes of the transaction
+        category:
+          type: string
+          description: Category of the transaction
+
+# Other info of transaction response payload
+  TransactionsOtherPutResponse:
+      properties:
+            message:
+              type: string
+              description: Message of success
+
+
+
+     
+# Other info of transaction request payload
+  TransactionsOtherDelete:
+      properties:
+        accountId:
+          type: string
+          description: ID of the account
+        transactionId:
+          type: string
+          description: ID of the transaction
+        notes:
+          type: boolean
+          description: Boolean to know if it should be deleted
+        category:
+          type: boolean
+          description: Boolean to know if it should be deleted
+
+# Other info of transaction response payload
+  TransactionsOtherDeleteResponse:
+      properties:
+          message:
+            type: string
+            description: Message of success
+
+            

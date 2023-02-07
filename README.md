@@ -184,6 +184,7 @@ P13/
    example: `helper-functions.tsx`
 
 - CSS: `kebab-case`
+
  examples:
 
   ```css
@@ -200,7 +201,7 @@ P13/
  examples:
 
  ```js
- const dataValues = [{value: 5}, {value: 2}];
+ let dataValues = [{value: 5}, {value: 2}];
 
  class Service{...}
 
@@ -217,4 +218,5 @@ This project:
  - Has a dark/light theme
  - Has a Swagger API documentation is available in this address: http://localhost:3001/api-docs/#/
  - Uses SSR (Server-side rendering)
+ - Uses the 7-1 pattern for SASS
   
